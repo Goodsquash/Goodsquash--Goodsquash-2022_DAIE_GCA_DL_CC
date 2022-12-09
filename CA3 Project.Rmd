@@ -6,7 +6,22 @@ output: html_document
 ---
 
 
-#Descriptive Statistics
+# Cleaning data
+```{r}
+
+#install.packages("tidyverse")
+library(tidyverse)
+View(daie_ca3_data_10.csv)
+
+
+
+
+```
+
+
+
+
+# Descriptive Statistics
 
 ```{r}
 
@@ -38,9 +53,12 @@ CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
 barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Control Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Green", border="Blue", ylim=c(0,10))
 
 ```
+
+
 #Inferenial Statistics
 
-##Histograms
+
+##Histograms showing the normal distribution between the 4 Pre and Post assesments
 
 ```{r}
 
@@ -121,9 +139,6 @@ qqline(daie_ca3_data_10$post_trial_or,
 
 
 
-
-qqline(daie_ca3_data_10$post_trial_or,
-       col = "darkorchid", lwd = 1)
 
 
 
