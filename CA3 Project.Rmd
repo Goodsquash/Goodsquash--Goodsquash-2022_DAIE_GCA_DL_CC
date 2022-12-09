@@ -122,6 +122,11 @@ qqline(daie_ca3_data_10$post_trial_or,
 
 
 
+qqline(daie_ca3_data_10$post_trial_or,
+       col = "darkorchid", lwd = 1)
+
+
+
 
 ```
 
