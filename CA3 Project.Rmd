@@ -6,20 +6,6 @@ output: html_document
 ---
 
 
-# Cleaning data
-```{r}
-
-#install.packages("tidyverse")
-library(tidyverse)
-View(daie_ca3_data_10.csv)
-
-
-
-
-```
-
-
-
 
 # Descriptive Statistics
 
@@ -53,6 +39,25 @@ CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
 barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Control Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Green", border="Blue", ylim=c(0,10))
 
 ```
+
+
+
+# Cleaning data
+```{r}
+
+#install.packages("tidyverse")
+library(tidyverse)
+glimpse(daie_ca3_data_10)
+class(daie_ca3_data_10$gender)
+unique(daie_ca3_data_10$gender)
+unique(daie_ca3_data_10$test_group)
+
+
+```
+
+
+
+
 
 
 #Inferenial Statistics
