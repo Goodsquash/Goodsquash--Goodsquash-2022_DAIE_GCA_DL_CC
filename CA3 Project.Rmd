@@ -52,6 +52,11 @@ class(daie_ca3_data_10$gender)
 unique(daie_ca3_data_10$gender)
 unique(daie_ca3_data_10$test_group)
 
+daie_ca3_data_10$test_group <- str_replace(daie_ca3_data_10$test_group,"Cotrol", "Control")
+
+unique(daie_ca3_data_10$test_group)
+
+
 
 ```
 

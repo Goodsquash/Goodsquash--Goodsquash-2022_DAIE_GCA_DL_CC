@@ -467,6 +467,10 @@ library(tidyverse)</code></pre>
 <pre><code>## [1] &quot;Male&quot;   &quot;Female&quot;</code></pre>
 <pre class="r"><code>unique(daie_ca3_data_10$test_group)</code></pre>
 <pre><code>## [1] &quot;Static&quot;   &quot;Control&quot;  &quot;Cotrol&quot;   &quot;Animated&quot;</code></pre>
+<pre class="r"><code>daie_ca3_data_10$test_group &lt;- str_replace(daie_ca3_data_10$test_group,&quot;Cotrol&quot;, &quot;Control&quot;)
+
+unique(daie_ca3_data_10$test_group)</code></pre>
+<pre><code>## [1] &quot;Static&quot;   &quot;Control&quot;  &quot;Animated&quot;</code></pre>
 <p>#Inferenial Statistics</p>
 <p>##Histograms showing the normal distribution between the 4 Pre and
 Post assesments</p>
