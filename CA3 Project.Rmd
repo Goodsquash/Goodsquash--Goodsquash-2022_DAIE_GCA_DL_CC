@@ -62,19 +62,19 @@ summary(daie_ca3_data_10)
 
 tail(daie_ca3_data_10,5)
 
-static_data<-c(6.1434,5.4312,6.161,5.4158)
+static_data<-c(6.0914,5.4188,6.1032,5.4124)
 CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
 
 barplot(static_data,xlab="Static VR Group",ylab="Trial Scores Mean", main="Static Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Orange", border="Blue", ylim=c(0,10))
 
 
-animated_data<-c(6.1636,5.8508,6.1956,5.8608)
+animated_data<-c(6.0462,5.315,6.0736,5.3418)
 CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
 
 barplot(animated_data,xlab="Animated VR Group",ylab="Trial Scores Mean", main="Animated Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Red", border="Blue", ylim=c(0,10))
 
 
-control_data<-c(6.1592,5.173,6.1666,5.3524)
+control_data<-c(6.2172,5.323,6.2638,5.3314)
 CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
 
 barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Control Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Green", border="Blue", ylim=c(0,10))
