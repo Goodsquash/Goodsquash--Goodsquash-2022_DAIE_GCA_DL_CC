@@ -1,9 +1,50 @@
 ---
 title: "CA3 - DAIE Project"
-author: "Conor Crean & Peter Leary"
+author: "Conor Crean & Daniel Lacey"
 date: "`r Sys.Date()`"
 output: html_document
 ---
+# **Data Analytics for Immersive Environments**
+## **Descriptive and Inferential Analysis of a Jungian Sandplay VR Project**
+
+### **Table Of Contents**
+
+#### Abstract
+* *Aim and Rationale*
+* *Participants and Setting*
+* *Experiment Design*
+* *Results Gathering*
+* *Major Findings*
+* *Findings/Implications*
+
+#### Introduction
+* *Topic and Context*
+* *Rationale*
+* *Hypothesis*
+
+#### Method
+* *Participants*
+* *Design*
+* *Materials*
+* *Procedure*
+
+#### Results
+* *Descriptive Statistics*
+* *Inferential Statistics*
+* *Statistical Tests*
+* *Magnitude and Direction of Results*
+
+#### Discussion
+
+* *Outline findings and relation to the hypothesis*
+* *Limitations*
+
+
+### Abstract
+
+The aim of this study is to test whether a virtual Jungian sandplay environment presented to psychotherapy patients undergoing treatment for PTSD has a positive effect on their CPSS (child PTSD symptom scale) scores compared to a control group that is subjected to CBT (Cognitive Behavioural Therapy) alone.
+
+
 
 
 
@@ -21,19 +62,19 @@ summary(daie_ca3_data_10)
 
 tail(daie_ca3_data_10,5)
 
-static_data<-c(6.1434,5.4312,6.161,5.4158)
+static_data<-c(6.0914,5.4188,6.1032,5.4124)
 CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
 
 barplot(static_data,xlab="Static VR Group",ylab="Trial Scores Mean", main="Static Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Orange", border="Blue", ylim=c(0,10))
 
 
-animated_data<-c(6.1636,5.8508,6.1956,5.8608)
+animated_data<-c(6.0462,5.315,6.0736,5.3418)
 CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
 
 barplot(animated_data,xlab="Animated VR Group",ylab="Trial Scores Mean", main="Animated Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Red", border="Blue", ylim=c(0,10))
 
 
-control_data<-c(6.1592,5.173,6.1666,5.3524)
+control_data<-c(6.2172,5.323,6.2638,5.3314)
 CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
 
 barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Control Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Green", border="Blue", ylim=c(0,10))
@@ -53,15 +94,32 @@ unique(daie_ca3_data_10$gender)
 unique(daie_ca3_data_10$test_group)
 
 
-
+#Replacing the incorrect value
 daie_ca3_data_10$test_group <- str_replace(daie_ca3_data_10$test_group,"Cotrol", "Control")
 
+#Checking the Group values
 unique(daie_ca3_data_10$test_group)
 
+#Checking for null values in the data
 
+is.null(daie_ca3_data_10)
+
+is.null(daie_ca3_data_10$pre_trial_cpss)
+
+is.null(daie_ca3_data_10$post_trial_cpss)
+
+is.null(daie_ca3_data_10$pre_trial_or)
+
+is.null(daie_ca3_data_10$post_trial_or)
+
+
+#Checked for negative values
+sum(daie_ca3_data_10 < 0)
+
+#Checked for values greater than 10
+sum(daie_ca3_data_10 > 10)
 
 ```
-
 
 
 
@@ -74,13 +132,13 @@ unique(daie_ca3_data_10$test_group)
 
 ```{r}
 
+cdata <- subset(daie_ca3_data_10, test_group == 0)
+sdata <- subset(daie_ca3_data_10, test_group == 1)
+adata <- subset(daie_ca3_data_10, test_group == 2)
 
+cpre_cpssmean <- mean(cdata$pre_trial_cpss)
+cpre_cpsssd <- sd(cdata$pre_trial_cpss)
 
-hist(daie_ca3_data_10$pre_trial_cpss,
-main = "Pre Trial CPSS",
-xlab = "Score",
-ylab = "Frequency",
-breaks = 8)
 
 
 hist(daie_ca3_data_10$post_trial_cpss,
