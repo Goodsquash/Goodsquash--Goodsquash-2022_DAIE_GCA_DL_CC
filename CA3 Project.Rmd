@@ -9,7 +9,7 @@ output: html_document
 
 ### **Table Of Contents**
 
-#### Abstract
+#### Abstract:
 * *Aim and Rationale*
 * *Participants and Setting*
 * *Experiment Design*
@@ -17,182 +17,203 @@ output: html_document
 * *Major Findings*
 * *Findings/Implications*
 
-#### Introduction
+#### Introduction:
 * *Topic and Context*
 * *Rationale*
 * *Hypothesis*
 
-#### Method
+#### Method:
 * *Participants*
 * *Design*
 * *Materials*
 * *Procedure*
 
-#### Results
+#### Results:
 * *Descriptive Statistics*
 * *Inferential Statistics*
 * *Statistical Tests*
 * *Magnitude and Direction of Results*
 
-#### Discussion
-
+#### Discussion:
 * *Outline findings and relation to the hypothesis*
 * *Limitations*
 
+**-------------------------------------------------------------------------------------------------------------------------------------------**
 
-### Abstract
+## Abstract
+
+#### **Aim and Rationale**
 
 The aim of this study is to test whether a virtual Jungian sandplay environment presented to psychotherapy patients undergoing treatment for PTSD has a positive effect on their CPSS (child PTSD symptom scale) scores compared to a control group that is subjected to CBT (Cognitive Behavioural Therapy) alone.
 
+#### **Participants and Setting**
+
+The study consists of 150 patients, aged between 18-25, age was not recorded but gender was. recorded 75 are male, 75 Female. There is an even amount across the two gender groups listed in the data. A sample of people are undergoing treatment for PTSD.
+
+#### **Experiment Design**
+
+The sample of 150 patients were divided into three groups. There was a Control group which involved traditional CBT treatment. The second group were the Static which involved a non-animated model content in VR. The third group was the Animated group which involved animated model content within VR. 
+
+#### **Results Gathering**
+
+The results were gathered from the three distinct groups over 12 weeks (about 3 months) during 50-minute treatment sessions. The PTSD results were measured using observer-rated and self-reported mechanisms. The measurements were taken at the start and end of the study  
+
+#### **Major Findings**
 
 
+#### **Findings/Implications**
+
+If this experiment shows a similar positive therapeutic effect to non-VR Jungian Sandplay then it opens the possibility of easy access to the Jungian Sandplay therapeutic method via VR instead of having to attend a physical location to receive the therapy. Thus, VR could possibly fill the role as a useful analogue to real life Jungian Sandplay making it a much more widely available therapeutic method to alleviate PTSD.
+
+## Introduction
+
+#### **Topic and Context**
+
+Does a virtual Jungian sandplay environment have a meaningful effect on CPSS scores in comparison to CBT.  
+
+#### **Rationale**
 
 
-# Descriptive Statistics
+#### **Hypothesis**
+
+
+## Method
+
+#### **Participants**
+
+150 young adults were recruited for the study (M=75, F=75) using random sampling. They were divided into 3 groups:  
+
+* Control (traditional CBT with no VR) 
+
+* Static (non-animated model content with VR) 
+
+* Animated (animated model content with VR) 
+
+All the patients were young adults between 18 – 25 years old. Gender information was recorded. All groups were of equal size. Each group was evenly split by sex (M=25, F=25). 
+
+#### **Design**
+
+The 3 groups underwent 12 weeks (about 3 months) of treatment for 50 minutes per week with a therapist. During that time, the participants either underwent traditional CBT or used one of the 2 VR apps (Static non-animated model content, Animated model content). PTSD measurements for all groups were measured using the observer-rated and the CPSS self-report mechanisms. Measurements were taken pre-trial and post-trial for each group.
+
+#### **Materials**
+
+#### **Procedure**
+
+
+## Results
+
+#### **Descriptive Statistics**
 
 ```{r}
-
 library(readr)
 daie_ca3_data_10 <- read_csv("daie_ca3_data_10.csv")
 #View(daie_ca3_data_10)
-
 head(daie_ca3_data_10,10)
-
 summary(daie_ca3_data_10)
-
 tail(daie_ca3_data_10,5)
-
-static_data<-c(6.1434,5.4312,6.161,5.4158)
+static_data<-c(6.0914,5.4188,6.1032,5.4124)
 CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
-
 barplot(static_data,xlab="Static VR Group",ylab="Trial Scores Mean", main="Static Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Orange", border="Blue", ylim=c(0,10))
-
-
-animated_data<-c(6.1636,5.8508,6.1956,5.8608)
+animated_data<-c(6.0462,5.315,6.0736,5.3418)
 CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
-
 barplot(animated_data,xlab="Animated VR Group",ylab="Trial Scores Mean", main="Animated Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Red", border="Blue", ylim=c(0,10))
-
-
-control_data<-c(6.1592,5.173,6.1666,5.3524)
+control_data<-c(6.2172,5.323,6.2638,5.3314)
 CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
-
 barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Control Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Green", border="Blue", ylim=c(0,10))
-
 ```
 
 
 
 # Cleaning data
 ```{r}
-
 #install.packages("tidyverse")
 library(tidyverse)
 glimpse(daie_ca3_data_10)
 class(daie_ca3_data_10$gender)
 unique(daie_ca3_data_10$gender)
 unique(daie_ca3_data_10$test_group)
-
+#Replacing the incorrect value
 daie_ca3_data_10$test_group <- str_replace(daie_ca3_data_10$test_group,"Cotrol", "Control")
-
+#Checking the Group values
 unique(daie_ca3_data_10$test_group)
-
-
-
+#Checking for null values in the data
+is.null(daie_ca3_data_10)
+is.null(daie_ca3_data_10$pre_trial_cpss)
+is.null(daie_ca3_data_10$post_trial_cpss)
+is.null(daie_ca3_data_10$pre_trial_or)
+is.null(daie_ca3_data_10$post_trial_or)
+#Checked for negative values
+sum(daie_ca3_data_10 < 0)
+#Checked for values greater than 10
+sum(daie_ca3_data_10 > 10)
 ```
 
 
 
 
 
+#### **Inferential Statistics**
 
-#Inferenial Statistics
 
-
-##Histograms showing the normal distribution between the 4 Pre and Post assesments
+### Histograms showing the normal distribution between the 4 Pre and Post assesments
 
 ```{r}
-
-
-
-hist(daie_ca3_data_10$pre_trial_cpss,
-main = "Pre Trial CPSS",
-xlab = "Score",
-ylab = "Frequency",
-breaks = 8)
-
-
+cdata <- subset(daie_ca3_data_10, test_group == 0)
+sdata <- subset(daie_ca3_data_10, test_group == 1)
+adata <- subset(daie_ca3_data_10, test_group == 2)
+cpre_cpssmean <- mean(cdata$pre_trial_cpss)
+cpre_cpsssd <- sd(cdata$pre_trial_cpss)
 hist(daie_ca3_data_10$post_trial_cpss,
 main = "Post Trial CPSS",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 8)
-
-
 hist(daie_ca3_data_10$pre_trial_or,
 main = "Pre Trial OR",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 8)
-
-
 hist(daie_ca3_data_10$post_trial_or,
 main = "Post Trial OR",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 8)
-
-
-
 ```
 
 ## QQ Plots
 
 ```{r QQ Plot - daie_ca3_data_10 }
-
 qqnorm(daie_ca3_data_10$pre_trial_cpss,
        pch = 2, frame = FALSE)
-
 qqline(daie_ca3_data_10$pre_trial_cpss,
        col = "darkorchid", lwd = 1)
-
-
-
 qqnorm(daie_ca3_data_10$post_trial_cpss,
        pch = 2, frame = FALSE)
-
 qqline(daie_ca3_data_10$post_trial_cpss,
        col = "darkorchid", lwd = 1)
-
-
-
-
 qqnorm(daie_ca3_data_10$pre_trial_or,
        pch = 2, frame = FALSE)
-
 qqline(daie_ca3_data_10$pre_trial_or,
        col = "darkorchid", lwd = 1)
-
-
-
 qqnorm(daie_ca3_data_10$post_trial_or,
        pch = 2, frame = FALSE)
-
 qqline(daie_ca3_data_10$post_trial_or,
        col = "darkorchid", lwd = 1)
-
-
-
-
 ```
 
 ```{r}
-
-
-
-
-
-
-
 ```
 
+
+
+#### **Statistical Tests**
+
+#### **Magnitude and Direction of Results**
+
+
+## References
+
+*
+*
+*
+*
