@@ -44,50 +44,17 @@ output: html_document
 
 The aim of this study is to test whether a virtual Jungian sandplay environment presented to psychotherapy patients undergoing treatment for PTSD has a positive effect on their CPSS (child PTSD symptom scale) scores compared to a control group that is subjected to CBT (Cognitive Behavioural Therapy) alone.
 
-
-
-
-
-# Descriptive Statistics
-
+# Cleaning data
 ```{r}
 
 library(readr)
 daie_ca3_data_10 <- read_csv("daie_ca3_data_10.csv")
 #View(daie_ca3_data_10)
 
-head(daie_ca3_data_10,10)
-
-summary(daie_ca3_data_10)
-
-tail(daie_ca3_data_10,5)
-
-static_data<-c(6.0914,5.4188,6.1032,5.4124)
-CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
-
-barplot(static_data,xlab="Static VR Group",ylab="Trial Scores Mean", main="Static Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Orange", border="Blue", ylim=c(0,10))
-
-
-animated_data<-c(6.0462,5.315,6.0736,5.3418)
-CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
-
-barplot(animated_data,xlab="Animated VR Group",ylab="Trial Scores Mean", main="Animated Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Red", border="Blue", ylim=c(0,10))
-
-
-control_data<-c(6.2172,5.323,6.2638,5.3314)
-CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
-
-barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Control Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Green", border="Blue", ylim=c(0,10))
-
-```
-
-
-
-# Cleaning data
-```{r}
 
 #install.packages("tidyverse")
 library(tidyverse)
+data()
 glimpse(daie_ca3_data_10)
 class(daie_ca3_data_10$gender)
 unique(daie_ca3_data_10$gender)
@@ -112,14 +79,95 @@ is.null(daie_ca3_data_10$pre_trial_or)
 
 is.null(daie_ca3_data_10$post_trial_or)
 
+is.na(daie_ca3_data_10)
+
+daie_ca3_data_10 <-daie_ca3_data_10 %>% drop_na()
+is.na(daie_ca3_data_10)
+
 
 #Checked for negative values
 sum(daie_ca3_data_10 < 0)
 
 #Checked for values greater than 10
+#Data for the entire set due to the first heading in the data 
 sum(daie_ca3_data_10 > 10)
 
+sum(daie_ca3_data_10$pre_trial_cpss > 10)
+sum(daie_ca3_data_10$post_trial_cpss > 10)
+sum(daie_ca3_data_10$pre_trial_or > 10)
+sum(daie_ca3_data_10$post_trial_or > 10)
 ```
+
+
+
+# Descriptive Statistics
+
+```{r}
+
+#Show 10 of the first few values of the data set
+head(daie_ca3_data_10,10)
+
+#Show last 10 values of data
+tail(daie_ca3_data_10,5)
+
+#Gives an overall summary of the data 
+summary(daie_ca3_data_10)
+
+daie_ca3_data_10%>%
+  drop_na(test_group)%>% 
+  group_by(test_group)%>%
+  summarise(Lower = min(pre_trial_cpss),
+          Average = mean(pre_trial_cpss),
+          Upper = max(pre_trial_cpss),
+          Difference = max(pre_trial_cpss)-min(pre_trial_cpss))
+  daie_ca3_data_10%>%
+  drop_na(test_group)%>%  
+  group_by(test_group)%>%
+  summarise(Lower1 = min(post_trial_cpss),
+          Average1 = mean(post_trial_cpss),
+          Upper1 = max(post_trial_cpss),
+          Difference1 = max(post_trial_cpss)-min(post_trial_cpss))
+  
+  daie_ca3_data_10%>%
+  drop_na(test_group)%>% 
+  group_by(test_group)%>%
+  summarise(Lower2 = min(pre_trial_or),
+          Average2 = mean(pre_trial_or),
+          Upper2 = max(pre_trial_or),
+          Difference2 = max(pre_trial_or)-min(pre_trial_or))
+  
+  daie_ca3_data_10%>%
+  drop_na(test_group)%>% 
+  group_by(test_group)%>%
+  summarise(Lower3 = min(post_trial_or),
+          Average3 = mean(post_trial_or),
+          Upper3 = max(post_trial_or),
+          Difference2 = max(post_trial_or)-min(post_trial_or))
+
+
+
+static_data<-c(6.0914,5.4188,6.1032,5.4124)
+CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
+
+barplot(static_data,xlab="Static VR Group",ylab="Trial Scores Mean", main="Static Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Orange", border="Blue", ylim=c(0,10))
+
+
+animated_data<-c(6.0462,5.315,6.0736,5.3418)
+CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
+
+barplot(animated_data,xlab="Animated VR Group",ylab="Trial Scores Mean", main="Animated Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Red", border="Blue", ylim=c(0,10))
+
+
+control_data<-c(6.2172,5.323,6.2638,5.3314)
+CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
+
+barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Control Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Green", border="Blue", ylim=c(0,10))
+
+```
+
+
+
+
 
 
 
@@ -132,34 +180,102 @@ sum(daie_ca3_data_10 > 10)
 
 ```{r}
 
-cdata <- subset(daie_ca3_data_10, test_group == 0)
-sdata <- subset(daie_ca3_data_10, test_group == 1)
-adata <- subset(daie_ca3_data_10, test_group == 2)
+#Checking Normal Distribution on Control Group 
 
-cpre_cpssmean <- mean(cdata$pre_trial_cpss)
-cpre_cpsssd <- sd(cdata$pre_trial_cpss)
-
-
-
-hist(daie_ca3_data_10$post_trial_cpss,
+df1<-subset(daie_ca3_data_10, test_group!="Static" & test_group!="Animated")
+df1
+  
+hist(df1$pre_trial_cpss,
 main = "Post Trial CPSS",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 8)
 
 
-hist(daie_ca3_data_10$pre_trial_or,
+hist(df1$post_trial_cpss,
+main = "Post Trial CPSS",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 8)
+
+
+hist(df1$pre_trial_or,
 main = "Pre Trial OR",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 8)
 
 
-hist(daie_ca3_data_10$post_trial_or,
+hist(df1$post_trial_or,
 main = "Post Trial OR",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 8)
+
+#Checking Normal Distribution on Static Group 
+
+df2<-subset(daie_ca3_data_10, test_group!="Control" & test_group!="Animated")
+df2
+
+hist(df2$pre_trial_cpss,
+main = "Post Trial CPSS - Static Group",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 8)
+
+
+hist(df2$post_trial_cpss,
+main = "Post Trial CPSS - Static Group",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 8)
+
+
+hist(df2$pre_trial_or,
+main = "Pre Trial OR - Static Group",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 8)
+
+
+hist(df2$post_trial_or,
+main = "Post Trial OR - Static Group",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 8)
+
+#Checking Normal Distribution on Animated Group 
+
+df3<-subset(daie_ca3_data_10, test_group!="Static" & test_group!="Control")
+df3
+
+hist(df3$pre_trial_cpss,
+main = "Post Trial CPSS - Animated",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 8)
+
+
+hist(df3$post_trial_cpss,
+main = "Post Trial CPSS - Animated",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 8)
+
+
+hist(df3$pre_trial_or,
+main = "Pre Trial OR - Animated",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 8)
+
+
+hist(df3$post_trial_or,
+main = "Post Trial OR - Animated",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 8)
+
 
 
 
@@ -169,44 +285,111 @@ breaks = 8)
 
 ```{r QQ Plot - daie_ca3_data_10 }
 
-qqnorm(daie_ca3_data_10$pre_trial_cpss,
+
+#q plot of Control Group
+qqnorm(df1$pre_trial_cpss,
        pch = 2, frame = FALSE)
 
-qqline(daie_ca3_data_10$pre_trial_cpss,
+qqline(df1$pre_trial_cpss,
        col = "darkorchid", lwd = 1)
 
 
 
-qqnorm(daie_ca3_data_10$post_trial_cpss,
+qqnorm(df1$post_trial_cpss,
        pch = 2, frame = FALSE)
 
-qqline(daie_ca3_data_10$post_trial_cpss,
+qqline(df1$post_trial_cpss,
        col = "darkorchid", lwd = 1)
 
 
 
 
-qqnorm(daie_ca3_data_10$pre_trial_or,
+qqnorm(df1$pre_trial_or,
        pch = 2, frame = FALSE)
 
-qqline(daie_ca3_data_10$pre_trial_or,
+qqline(df1$pre_trial_or,
        col = "darkorchid", lwd = 1)
 
 
 
-qqnorm(daie_ca3_data_10$post_trial_or,
+qqnorm(df1$post_trial_or,
        pch = 2, frame = FALSE)
 
-qqline(daie_ca3_data_10$post_trial_or,
+qqline(df1$post_trial_or,
        col = "darkorchid", lwd = 1)
 
 
+#q plot of Static Group
+
+qqnorm(df2$pre_trial_cpss,
+       pch = 2, frame = FALSE)
+
+qqline(df2$pre_trial_cpss,
+       col = "darkorchid", lwd = 1)
+
+
+
+qqnorm(df2$post_trial_cpss,
+       pch = 2, frame = FALSE)
+
+qqline(df2$post_trial_cpss,
+       col = "darkorchid", lwd = 1)
+
+
+
+
+qqnorm(df2$pre_trial_or,
+       pch = 2, frame = FALSE)
+
+qqline(df2$pre_trial_or,
+       col = "darkorchid", lwd = 1)
+
+
+
+qqnorm(df2$post_trial_or,
+       pch = 2, frame = FALSE)
+
+qqline(df2$post_trial_or,
+       col = "darkorchid", lwd = 1)
+
+
+#q plot of Animated Group
+
+qqnorm(df3$pre_trial_cpss,
+       pch = 2, frame = FALSE)
+
+qqline(df3$pre_trial_cpss,
+       col = "darkorchid", lwd = 1)
+
+
+
+qqnorm(df3$post_trial_cpss,
+       pch = 2, frame = FALSE)
+
+qqline(df3$post_trial_cpss,
+       col = "darkorchid", lwd = 1)
+
+
+
+
+qqnorm(df3$pre_trial_or,
+       pch = 2, frame = FALSE)
+
+qqline(df3$pre_trial_or,
+       col = "darkorchid", lwd = 1)
+
+
+
+qqnorm(df3$post_trial_or,
+       pch = 2, frame = FALSE)
+
+qqline(df3$post_trial_or,
+       col = "darkorchid", lwd = 1)
 
 
 ```
 
 ```{r}
-
 
 
 
