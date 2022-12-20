@@ -2,14 +2,20 @@
 title: "CA3 - DAIE Project"
 author: "Conor Crean & Daniel Lacey"
 date: "`r Sys.Date()`"
-output: html_document
+output: 
+  html_document:
+    theme: journal
+    toc: true
+    toc_float: true
 ---
 # **Data Analytics for Immersive Environments**
-## **Descriptive and Inferential Analysis of a Jungian Sandplay VR Project**
+### *Descriptive and Inferential Analysis of a Jungian Sandplay VR Project*
 
-### **Table Of Contents**
+---
 
-#### Abstract:
+* #### **Table Of Contents:**
+
+##### *Abstract:*
 * *Aim and Rationale*
 * *Participants and Setting*
 * *Experiment Design*
@@ -17,28 +23,28 @@ output: html_document
 * *Major Findings*
 * *Findings/Implications*
 
-#### Introduction:
+##### *Introduction:*
 * *Topic and Context*
 * *Rationale*
 * *Hypothesis*
 
-#### Method:
+##### *Method:*
 * *Participants*
 * *Design*
 * *Materials*
 * *Procedure*
 
-#### Results:
+##### *Results:*
 * *Descriptive Statistics*
 * *Inferential Statistics*
 * *Statistical Tests*
 * *Magnitude and Direction of Results*
 
-#### Discussion:
+##### *Discussion:*
 * *Outline findings and relation to the hypothesis*
 * *Limitations*
 
-**-------------------------------------------------------------------------------------------------------------------------------------------**
+---
 
 ## Abstract
 
@@ -124,7 +130,7 @@ barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Contro
 
 
 
-# Cleaning data
+##### *Cleaning data*
 ```{r}
 #install.packages("tidyverse")
 library(tidyverse)
@@ -155,7 +161,7 @@ sum(daie_ca3_data_10 > 10)
 #### **Inferential Statistics**
 
 
-### Histograms showing the normal distribution between the 4 Pre and Post assesments
+* #### *Histograms showing the normal distribution between the 4 Pre and Post assesments*
 
 ```{r}
 cdata <- subset(daie_ca3_data_10, test_group == 0)
@@ -180,7 +186,7 @@ ylab = "Frequency",
 breaks = 8)
 ```
 
-## QQ Plots
+* #### *QQ Plots*
 
 ```{r QQ Plot - daie_ca3_data_10 }
 qqnorm(daie_ca3_data_10$pre_trial_cpss,
@@ -209,6 +215,12 @@ qqline(daie_ca3_data_10$post_trial_or,
 #### **Statistical Tests**
 
 #### **Magnitude and Direction of Results**
+
+## Discussion
+
+#### **Outline findings and relation to the hypothesis**
+#### **Limitations**
+
 
 
 ## References
