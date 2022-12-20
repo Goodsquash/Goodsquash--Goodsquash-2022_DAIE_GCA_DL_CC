@@ -2,14 +2,20 @@
 title: "CA3 - DAIE Project"
 author: "Conor Crean & Daniel Lacey"
 date: "`r Sys.Date()`"
-output: html_document
+output: 
+  html_document:
+    theme: journal
+    toc: true
+    toc_float: true
 ---
 # **Data Analytics for Immersive Environments**
-## **Descriptive and Inferential Analysis of a Jungian Sandplay VR Project**
+### *Descriptive and Inferential Analysis of a Jungian Sandplay VR Project*
 
-### **Table Of Contents**
+---
 
-#### Abstract:
+* #### **Table Of Contents:**
+
+##### *Abstract:*
 * *Aim and Rationale*
 * *Participants and Setting*
 * *Experiment Design*
@@ -17,28 +23,28 @@ output: html_document
 * *Major Findings*
 * *Findings/Implications*
 
-#### Introduction:
+##### *Introduction:*
 * *Topic and Context*
 * *Rationale*
 * *Hypothesis*
 
-#### Method:
+##### *Method:*
 * *Participants*
 * *Design*
 * *Materials*
 * *Procedure*
 
-#### Results:
+##### *Results:*
 * *Descriptive Statistics*
 * *Inferential Statistics*
 * *Statistical Tests*
 * *Magnitude and Direction of Results*
 
-#### Discussion:
+##### *Discussion:*
 * *Outline findings and relation to the hypothesis*
 * *Limitations*
 
-**-------------------------------------------------------------------------------------------------------------------------------------------**
+---
 
 ## Abstract
 
@@ -102,12 +108,13 @@ The 3 groups underwent 12 weeks (about 3 months) of treatment for 50 minutes per
 
 ## Results
 
-#### **Descriptive Statistics**
-
+##### *Cleaning data*
 ```{r}
 library(readr)
 daie_ca3_data_10 <- read_csv("daie_ca3_data_10.csv")
 #View(daie_ca3_data_10)
+#<<<<<<< HEAD
+#======
 head(daie_ca3_data_10,10)
 summary(daie_ca3_data_10)
 tail(daie_ca3_data_10,5)
@@ -124,10 +131,12 @@ barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Contro
 
 
 
-# Cleaning data
+##### *Cleaning data*
 ```{r}
+#>>>>>>> 0b26bd5fccf0ee1c77c870f08f7e9cf9f10e8303
 #install.packages("tidyverse")
 library(tidyverse)
+data()
 glimpse(daie_ca3_data_10)
 class(daie_ca3_data_10$gender)
 unique(daie_ca3_data_10$gender)
@@ -142,62 +151,211 @@ is.null(daie_ca3_data_10$pre_trial_cpss)
 is.null(daie_ca3_data_10$post_trial_cpss)
 is.null(daie_ca3_data_10$pre_trial_or)
 is.null(daie_ca3_data_10$post_trial_or)
+is.na(daie_ca3_data_10)
+daie_ca3_data_10 <-daie_ca3_data_10 %>% drop_na()
+is.na(daie_ca3_data_10)
 #Checked for negative values
 sum(daie_ca3_data_10 < 0)
 #Checked for values greater than 10
+#Data for the entire set due to the first heading in the data 
 sum(daie_ca3_data_10 > 10)
+sum(daie_ca3_data_10$pre_trial_cpss > 10)
+sum(daie_ca3_data_10$post_trial_cpss > 10)
+sum(daie_ca3_data_10$pre_trial_or > 10)
+sum(daie_ca3_data_10$post_trial_or > 10)
+
+```
+
+
+#### **Descriptive Statistics**
+
+```{r}
+#Show 10 of the first few values of the data set
+head(daie_ca3_data_10,10)
+#Show last 10 values of data
+tail(daie_ca3_data_10,5)
+#Gives an overall summary of the data 
+summary(daie_ca3_data_10)
+daie_ca3_data_10%>%
+  drop_na(test_group)%>% 
+  group_by(test_group)%>%
+  summarise(Lower = min(pre_trial_cpss),
+          Average = mean(pre_trial_cpss),
+          Upper = max(pre_trial_cpss),
+          Difference = max(pre_trial_cpss)-min(pre_trial_cpss))
+  daie_ca3_data_10%>%
+  drop_na(test_group)%>%  
+  group_by(test_group)%>%
+  summarise(Lower1 = min(post_trial_cpss),
+          Average1 = mean(post_trial_cpss),
+          Upper1 = max(post_trial_cpss),
+          Difference1 = max(post_trial_cpss)-min(post_trial_cpss))
+  
+  daie_ca3_data_10%>%
+  drop_na(test_group)%>% 
+  group_by(test_group)%>%
+  summarise(Lower2 = min(pre_trial_or),
+          Average2 = mean(pre_trial_or),
+          Upper2 = max(pre_trial_or),
+          Difference2 = max(pre_trial_or)-min(pre_trial_or))
+  
+  daie_ca3_data_10%>%
+  drop_na(test_group)%>% 
+  group_by(test_group)%>%
+  summarise(Lower3 = min(post_trial_or),
+          Average3 = mean(post_trial_or),
+          Upper3 = max(post_trial_or),
+          Difference2 = max(post_trial_or)-min(post_trial_or))
+static_data<-c(6.0914,5.4188,6.1032,5.4124)
+CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
+barplot(static_data,xlab="Static VR Group",ylab="Trial Scores Mean", main="Static Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Orange", border="Blue", ylim=c(0,10))
+animated_data<-c(6.0462,5.315,6.0736,5.3418)
+CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
+barplot(animated_data,xlab="Animated VR Group",ylab="Trial Scores Mean", main="Animated Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Red", border="Blue", ylim=c(0,10))
+control_data<-c(6.2172,5.323,6.2638,5.3314)
+CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
+barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Control Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Green", border="Blue", ylim=c(0,10))
+
 ```
 
 
 
 
+#Inferenial Statistics
 
-#### **Inferential Statistics**
 
-
-### Histograms showing the normal distribution between the 4 Pre and Post assesments
+<<<<<<< HEAD
+##Histograms showing the normal distribution between the 4 Pre and Post assesments
+=======
+* #### *Histograms showing the normal distribution between the 4 Pre and Post assesments*
+#>>>>>>> 0b26bd5fccf0ee1c77c870f08f7e9cf9f10e8303
 
 ```{r}
-cdata <- subset(daie_ca3_data_10, test_group == 0)
-sdata <- subset(daie_ca3_data_10, test_group == 1)
-adata <- subset(daie_ca3_data_10, test_group == 2)
-cpre_cpssmean <- mean(cdata$pre_trial_cpss)
-cpre_cpsssd <- sd(cdata$pre_trial_cpss)
-hist(daie_ca3_data_10$post_trial_cpss,
+#Checking Normal Distribution on Control Group 
+df1<-subset(daie_ca3_data_10, test_group!="Static" & test_group!="Animated")
+df1
+  
+hist(df1$pre_trial_cpss,
 main = "Post Trial CPSS",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 8)
-hist(daie_ca3_data_10$pre_trial_or,
+hist(df1$post_trial_cpss,
+main = "Post Trial CPSS",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 8)
+hist(df1$pre_trial_or,
 main = "Pre Trial OR",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 8)
-hist(daie_ca3_data_10$post_trial_or,
+hist(df1$post_trial_or,
 main = "Post Trial OR",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 8)
+#Checking Normal Distribution on Static Group 
+df2<-subset(daie_ca3_data_10, test_group!="Control" & test_group!="Animated")
+df2
+hist(df2$pre_trial_cpss,
+main = "Post Trial CPSS - Static Group",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 8)
+hist(df2$post_trial_cpss,
+main = "Post Trial CPSS - Static Group",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 8)
+hist(df2$pre_trial_or,
+main = "Pre Trial OR - Static Group",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 8)
+hist(df2$post_trial_or,
+main = "Post Trial OR - Static Group",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 8)
+#Checking Normal Distribution on Animated Group 
+df3<-subset(daie_ca3_data_10, test_group!="Static" & test_group!="Control")
+df3
+hist(df3$pre_trial_cpss,
+main = "Post Trial CPSS - Animated",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 8)
+hist(df3$post_trial_cpss,
+main = "Post Trial CPSS - Animated",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 8)
+hist(df3$pre_trial_or,
+main = "Pre Trial OR - Animated",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 8)
+hist(df3$post_trial_or,
+main = "Post Trial OR - Animated",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 8)
 ```
 
-## QQ Plots
+* #### *QQ Plots*
 
 ```{r QQ Plot - daie_ca3_data_10 }
-qqnorm(daie_ca3_data_10$pre_trial_cpss,
+#q plot of Control Group
+qqnorm(df1$pre_trial_cpss,
        pch = 2, frame = FALSE)
-qqline(daie_ca3_data_10$pre_trial_cpss,
+qqline(df1$pre_trial_cpss,
        col = "darkorchid", lwd = 1)
-qqnorm(daie_ca3_data_10$post_trial_cpss,
+qqnorm(df1$post_trial_cpss,
        pch = 2, frame = FALSE)
-qqline(daie_ca3_data_10$post_trial_cpss,
+qqline(df1$post_trial_cpss,
        col = "darkorchid", lwd = 1)
-qqnorm(daie_ca3_data_10$pre_trial_or,
+qqnorm(df1$pre_trial_or,
        pch = 2, frame = FALSE)
-qqline(daie_ca3_data_10$pre_trial_or,
+qqline(df1$pre_trial_or,
        col = "darkorchid", lwd = 1)
-qqnorm(daie_ca3_data_10$post_trial_or,
+qqnorm(df1$post_trial_or,
        pch = 2, frame = FALSE)
-qqline(daie_ca3_data_10$post_trial_or,
+qqline(df1$post_trial_or,
+       col = "darkorchid", lwd = 1)
+#q plot of Static Group
+qqnorm(df2$pre_trial_cpss,
+       pch = 2, frame = FALSE)
+qqline(df2$pre_trial_cpss,
+       col = "darkorchid", lwd = 1)
+qqnorm(df2$post_trial_cpss,
+       pch = 2, frame = FALSE)
+qqline(df2$post_trial_cpss,
+       col = "darkorchid", lwd = 1)
+qqnorm(df2$pre_trial_or,
+       pch = 2, frame = FALSE)
+qqline(df2$pre_trial_or,
+       col = "darkorchid", lwd = 1)
+qqnorm(df2$post_trial_or,
+       pch = 2, frame = FALSE)
+qqline(df2$post_trial_or,
+       col = "darkorchid", lwd = 1)
+#q plot of Animated Group
+qqnorm(df3$pre_trial_cpss,
+       pch = 2, frame = FALSE)
+qqline(df3$pre_trial_cpss,
+       col = "darkorchid", lwd = 1)
+qqnorm(df3$post_trial_cpss,
+       pch = 2, frame = FALSE)
+qqline(df3$post_trial_cpss,
+       col = "darkorchid", lwd = 1)
+qqnorm(df3$pre_trial_or,
+       pch = 2, frame = FALSE)
+qqline(df3$pre_trial_or,
+       col = "darkorchid", lwd = 1)
+qqnorm(df3$post_trial_or,
+       pch = 2, frame = FALSE)
+qqline(df3$post_trial_or,
        col = "darkorchid", lwd = 1)
 ```
 
@@ -209,6 +367,12 @@ qqline(daie_ca3_data_10$post_trial_or,
 #### **Statistical Tests**
 
 #### **Magnitude and Direction of Results**
+
+## Discussion
+
+#### **Outline findings and relation to the hypothesis**
+#### **Limitations**
+
 
 
 ## References
