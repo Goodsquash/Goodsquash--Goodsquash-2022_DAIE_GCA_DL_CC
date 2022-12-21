@@ -113,8 +113,7 @@ The 3 groups underwent 12 weeks (about 3 months) of treatment for 50 minutes per
 library(readr)
 daie_ca3_data_10 <- read_csv("daie_ca3_data_10.csv")
 #View(daie_ca3_data_10)
-#<<<<<<< HEAD
-#======
+
 head(daie_ca3_data_10,10)
 summary(daie_ca3_data_10)
 tail(daie_ca3_data_10,5)
@@ -133,7 +132,7 @@ barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Contro
 
 ##### *Cleaning data*
 ```{r}
-#>>>>>>> 0b26bd5fccf0ee1c77c870f08f7e9cf9f10e8303
+
 #install.packages("tidyverse")
 library(tidyverse)
 data()
@@ -228,7 +227,6 @@ barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Contro
 ##Histograms showing the normal distribution between the 4 Pre and Post assesments
 =======
 * #### *Histograms showing the normal distribution between the 4 Pre and Post assesments*
-#>>>>>>> 0b26bd5fccf0ee1c77c870f08f7e9cf9f10e8303
 
 ```{r}
 #Checking Normal Distribution on Control Group 
