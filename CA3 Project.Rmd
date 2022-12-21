@@ -113,8 +113,7 @@ The 3 groups underwent 12 weeks (about 3 months) of treatment for 50 minutes per
 library(readr)
 daie_ca3_data_10 <- read_csv("daie_ca3_data_10.csv")
 #View(daie_ca3_data_10)
-<<<<<<< HEAD
-=======
+
 head(daie_ca3_data_10,10)
 summary(daie_ca3_data_10)
 tail(daie_ca3_data_10,5)
@@ -133,7 +132,7 @@ barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Contro
 
 ##### *Cleaning data*
 ```{r}
->>>>>>> 0b26bd5fccf0ee1c77c870f08f7e9cf9f10e8303
+
 #install.packages("tidyverse")
 library(tidyverse)
 data()
@@ -206,12 +205,15 @@ daie_ca3_data_10%>%
           Average3 = mean(post_trial_or),
           Upper3 = max(post_trial_or),
           Difference2 = max(post_trial_or)-min(post_trial_or))
+
 static_data<-c(6.0914,5.4188,6.1032,5.4124)
 CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
 barplot(static_data,xlab="Static VR Group",ylab="Trial Scores Mean", main="Static Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Orange", border="Blue", ylim=c(0,10))
+
 animated_data<-c(6.0462,5.315,6.0736,5.3418)
 CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
 barplot(animated_data,xlab="Animated VR Group",ylab="Trial Scores Mean", main="Animated Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Red", border="Blue", ylim=c(0,10))
+
 control_data<-c(6.2172,5.323,6.2638,5.3314)
 CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
 barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Control Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Green", border="Blue", ylim=c(0,10))
@@ -228,7 +230,7 @@ barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Contro
 ##Histograms showing the normal distribution between the 4 Pre and Post assesments
 =======
 * #### *Histograms showing the normal distribution between the 4 Pre and Post assesments*
->>>>>>> 0b26bd5fccf0ee1c77c870f08f7e9cf9f10e8303
+
 
 ```{r}
 #Checking Normal Distribution on Control Group 
@@ -236,21 +238,28 @@ df1<-subset(daie_ca3_data_10, test_group!="Static" & test_group!="Animated")
 df1
   
 hist(df1$pre_trial_cpss,
-main = "Post Trial CPSS",
+col="seagreen3",
+main = "Pre Trial CPSS",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 8)
+
 hist(df1$post_trial_cpss,
+col="seagreen1",
 main = "Post Trial CPSS",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 8)
+
 hist(df1$pre_trial_or,
+col="skyblue3",
 main = "Pre Trial OR",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 8)
+
 hist(df1$post_trial_or,
+col="skyblue1",
 main = "Post Trial OR",
 xlab = "Score",
 ylab = "Frequency",
@@ -258,22 +267,30 @@ breaks = 8)
 #Checking Normal Distribution on Static Group 
 df2<-subset(daie_ca3_data_10, test_group!="Control" & test_group!="Animated")
 df2
+
 hist(df2$pre_trial_cpss,
-main = "Post Trial CPSS - Static Group",
+col="orange3",
+main = "Pre Trial CPSS - Static Group",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 8)
+
 hist(df2$post_trial_cpss,
+col="orange",
 main = "Post Trial CPSS - Static Group",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 8)
+
 hist(df2$pre_trial_or,
+col="orange3",
 main = "Pre Trial OR - Static Group",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 8)
+
 hist(df2$post_trial_or,
+col="orange",
 main = "Post Trial OR - Static Group",
 xlab = "Score",
 ylab = "Frequency",
@@ -281,22 +298,30 @@ breaks = 8)
 #Checking Normal Distribution on Animated Group 
 df3<-subset(daie_ca3_data_10, test_group!="Static" & test_group!="Control")
 df3
+
 hist(df3$pre_trial_cpss,
-main = "Post Trial CPSS - Animated",
+col="red3",
+main = "Pre Trial CPSS - Animated",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 8)
+
 hist(df3$post_trial_cpss,
+col="red",
 main = "Post Trial CPSS - Animated",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 8)
+
 hist(df3$pre_trial_or,
+col="red3",
 main = "Pre Trial OR - Animated",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 8)
+
 hist(df3$post_trial_or,
+col="red",
 main = "Post Trial OR - Animated",
 xlab = "Score",
 ylab = "Frequency",
