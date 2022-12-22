@@ -106,17 +106,8 @@ The 3 groups underwent 12 weeks (about 3 months) of treatment for 50 minutes per
 
 ### **Materials**
 
-The groups using the VR app used a tablet with the app installed. They were also given a pen and board to self-report their level of symptoms. 
-
-The control group just used a pen and board to self-report their symptoms whilst attending a CBT session with a therapist.
-
 ### **Procedure**
 
-1. Each group of patients in the static, animated and control groups self-report their PTSD symptoms using the Child PTSD Symptom Scale (CPSS) before their respective therapy sessions. The attending therapists will also record their patient observations pre-therapy. 
-
-2. The static and animated groups will then use their respective VR apps on the tablets provided for their therapy sessions. The control group will attend ordinary CBT sessions. 
-
-3. All groups will then self-report their symptoms using the Child PTSD Symptom Scale (CPSS) post-therapy on the boards provided. The attending therapists will also record their observations post-therapy. 
 
 # Results
 
@@ -443,8 +434,27 @@ qqline(daie_ca3_data_10$post_trial_or,
 summary(df1)
 summary(df2)
 summary(df3)
-  sample.mean <- mean(daie_ca3_data_10$pre_trial_cpss)
-  print(sample.mean)
+sample.mean <- mean(daie_ca3_data_10$pre_trial_cpss)
+print(sample.mean)
+
+  
+sample.n <- length(daie_ca3_data_10$pre_trial_cpss)
+sample.sd <- sd(daie_ca3_data_10$pre_trial_cpss)
+sample.se <- sample.sd/sqrt(sample.n)
+print(sample.se)
+  
+alpha = 0.05
+degrees.freedom = sample.n - 1
+t.score = qt(p=alpha/2, df=degrees.freedom,lower.tail=F)
+print(t.score)
+  
+margin.error <- t.score * sample.se
+  
+lower.bound <- sample.mean - margin.error
+upper.bound <- sample.mean + margin.error
+print(c(lower.bound,upper.bound))
+  
+  
 ```
 
 
