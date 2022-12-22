@@ -111,21 +111,13 @@ The 3 groups underwent 12 weeks (about 3 months) of treatment for 50 minutes per
 ##### *Cleaning data*
 ```{r}
 library(readr)
-daie_ca3_data_10 <- read_csv("daie_ca3_data_10.csv")
+daie_ca3_data_10 <- read.csv("daie_ca3_data_10.csv")
 #View(daie_ca3_data_10)
 
 head(daie_ca3_data_10,10)
 summary(daie_ca3_data_10)
 tail(daie_ca3_data_10,5)
-static_data<-c(6.0914,5.4188,6.1032,5.4124)
-CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
-barplot(static_data,xlab="Static VR Group",ylab="Trial Scores Mean", main="Static Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Orange", border="Blue", ylim=c(0,10))
-animated_data<-c(6.0462,5.315,6.0736,5.3418)
-CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
-barplot(animated_data,xlab="Animated VR Group",ylab="Trial Scores Mean", main="Animated Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Red", border="Blue", ylim=c(0,10))
-control_data<-c(6.2172,5.323,6.2638,5.3314)
-CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
-barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Control Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Green", border="Blue", ylim=c(0,10))
+
 ```
 
 
@@ -205,30 +197,30 @@ daie_ca3_data_10%>%
           Average3 = mean(post_trial_or),
           Upper3 = max(post_trial_or),
           Difference2 = max(post_trial_or)-min(post_trial_or))
+```
+  
+## **3 Group Boxplots**
 
+```{r}  
 static_data<-c(6.0914,5.4188,6.1032,5.4124)
 CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
 barplot(static_data,xlab="Static VR Group",ylab="Trial Scores Mean", main="Static Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Orange", border="Blue", ylim=c(0,10))
 
-animated_data<-c(6.0462,5.315,6.0736,5.3418)
+animated_data<-c(5.998163265,5.387755102,6.037959184,5.364897959)
 CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
 barplot(animated_data,xlab="Animated VR Group",ylab="Trial Scores Mean", main="Animated Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Red", border="Blue", ylim=c(0,10))
 
 control_data<-c(6.2172,5.323,6.2638,5.3314)
 CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
 barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Control Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Green", border="Blue", ylim=c(0,10))
-
 ```
 
 
 
 
-#Inferenial Statistics
 
+#### **Inferential Statistics**
 
-<<<<<<< HEAD
-##Histograms showing the normal distribution between the 4 Pre and Post assesments
-=======
 * #### *Histograms showing the normal distribution between the 4 Pre and Post assesments*
 
 
