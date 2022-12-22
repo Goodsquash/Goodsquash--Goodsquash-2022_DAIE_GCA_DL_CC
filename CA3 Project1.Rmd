@@ -1,0 +1,470 @@
+---
+title: "CA3 - DAIE Project"
+author: "Conor Crean & Daniel Lacey"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    theme: journal
+    toc: true
+    toc_float: true
+---
+# **Data Analytics for Immersive Environments**
+### *Descriptive and Inferential Analysis of a Jungian Sandplay VR Project*
+
+---
+
+* #### **Table Of Contents:**
+
+##### *Abstract:*
+* *Aim and Rationale*
+* *Participants and Setting*
+* *Experiment Design*
+* *Results Gathering*
+* *Major Findings*
+* *Findings/Implications*
+
+##### *Introduction:*
+* *Topic and Context*
+* *Rationale*
+* *Hypothesis*
+
+##### *Method:*
+* *Participants*
+* *Design*
+* *Materials*
+* *Procedure*
+
+##### *Results:*
+* *Descriptive Statistics*
+* *Inferential Statistics*
+* *Statistical Tests*
+* *Magnitude and Direction of Results*
+
+##### *Discussion:*
+* *Outline findings and relation to the hypothesis*
+* *Limitations*
+
+---
+
+
+
+# Abstract
+
+
+### **Aim and Rationale**
+
+The aim of this study is to test whether a virtual Jungian sandplay environment presented to psychotherapy patients undergoing treatment for PTSD has a positive effect on their CPSS (child PTSD symptom scale) scores compared to a control group that is subjected to CBT (Cognitive Behavioural Therapy) alone.
+
+### **Participants and Setting**
+
+The study consists of 150 patients, aged between 18-25, age was not recorded but gender was. recorded 75 are male, 75 Female. There is an even amount across the two gender groups listed in the data. A sample of people are undergoing treatment for PTSD.
+
+### **Experiment Design**
+
+The sample of 150 patients were divided into three groups. There was a Control group which involved traditional CBT treatment. The second group were the Static which involved a non-animated model content in VR. The third group was the Animated group which involved animated model content within VR. 
+
+### **Results Gathering**
+
+The results were gathered from the three distinct groups over 12 weeks (about 3 months) during 50-minute treatment sessions. The PTSD results were measured using observer-rated and self-reported mechanisms. The measurements were taken at the start and end of the study  
+
+### **Major Findings**
+
+
+### **Findings/Implications**
+
+If this experiment shows a similar positive therapeutic effect to non-VR Jungian Sandplay then it opens the possibility of easy access to the Jungian Sandplay therapeutic method via VR instead of having to attend a physical location to receive the therapy. Thus, VR could possibly fill the role as a useful analogue to real life Jungian Sandplay making it a much more widely available therapeutic method to alleviate PTSD.
+
+# Introduction
+
+### **Topic and Context**
+
+Does a virtual Jungian sandplay environment have a meaningful effect on CPSS scores in comparison to CBT.  
+
+### **Rationale**
+
+
+### **Hypothesis**
+
+
+# Method
+
+### **Participants**
+
+150 young adults were recruited for the study (M=75, F=75) using random sampling. They were divided into 3 groups:  
+
+* Control (traditional CBT with no VR) 
+
+* Static (non-animated model content with VR) 
+
+* Animated (animated model content with VR) 
+
+All the patients were young adults between 18 – 25 years old. Gender information was recorded. All groups were of equal size. Each group was evenly split by sex (M=25, F=25). 
+
+### **Design**
+
+The 3 groups underwent 12 weeks (about 3 months) of treatment for 50 minutes per week with a therapist. During that time, the participants either underwent traditional CBT or used one of the 2 VR apps (Static non-animated model content, Animated model content). PTSD measurements for all groups were measured using the observer-rated and the CPSS self-report mechanisms. Measurements were taken pre-trial and post-trial for each group.
+
+### **Materials**
+
+### **Procedure**
+
+
+# Results
+
+##### *Cleaning data*
+```{r , echo=FALSE}
+library(readr)
+daie_ca3_data_10 <- read_csv("daie_ca3_data_10.csv")
+#View(daie_ca3_data_10)
+head(daie_ca3_data_10,10)
+summary(daie_ca3_data_10)
+tail(daie_ca3_data_10,5)
+
+
+#install.packages("tidyverse")
+library(tidyverse)
+data()
+glimpse(daie_ca3_data_10)
+class(daie_ca3_data_10$gender)
+unique(daie_ca3_data_10$gender)
+unique(daie_ca3_data_10$test_group)
+#Replacing the incorrect value
+daie_ca3_data_10$test_group <- str_replace(daie_ca3_data_10$test_group,"Cotrol", "Control")
+#Checking the Group values
+unique(daie_ca3_data_10$test_group)
+#Checking for null values in the data
+is.null(daie_ca3_data_10)
+is.null(daie_ca3_data_10$pre_trial_cpss)
+is.null(daie_ca3_data_10$post_trial_cpss)
+is.null(daie_ca3_data_10$pre_trial_or)
+is.null(daie_ca3_data_10$post_trial_or)
+is.na(daie_ca3_data_10)
+daie_ca3_data_10 <-daie_ca3_data_10 %>% drop_na()
+is.na(daie_ca3_data_10)
+#Checked for negative values
+sum(daie_ca3_data_10 < 0)
+#Checked for values greater than 10
+#Data for the entire set due to the first heading in the data 
+sum(daie_ca3_data_10 > 10)
+sum(daie_ca3_data_10$pre_trial_cpss > 10)
+sum(daie_ca3_data_10$post_trial_cpss > 10)
+sum(daie_ca3_data_10$pre_trial_or > 10)
+sum(daie_ca3_data_10$post_trial_or > 10)
+```
+
+
+### **Descriptive Statistics**
+
+```{r, echo=TRUE}
+#Show 10 of the first few values of the data set
+head(daie_ca3_data_10,10)
+#Show last 10 values of data
+tail(daie_ca3_data_10,5)
+#Gives an overall summary of the data 
+summary(daie_ca3_data_10)
+daie_ca3_data_10%>%
+  drop_na(test_group)%>% 
+  group_by(test_group)%>%
+  summarise(Lower = min(pre_trial_cpss),
+          Average = mean(pre_trial_cpss),
+          Upper = max(pre_trial_cpss),
+          Difference = max(pre_trial_cpss)-min(pre_trial_cpss))
+  daie_ca3_data_10%>%
+  drop_na(test_group)%>%  
+  group_by(test_group)%>%
+  summarise(Lower1 = min(post_trial_cpss),
+          Average1 = mean(post_trial_cpss),
+          Upper1 = max(post_trial_cpss),
+          Difference1 = max(post_trial_cpss)-min(post_trial_cpss))
+  
+  daie_ca3_data_10%>%
+  drop_na(test_group)%>% 
+  group_by(test_group)%>%
+  summarise(Lower2 = min(pre_trial_or),
+          Average2 = mean(pre_trial_or),
+          Upper2 = max(pre_trial_or),
+          Difference2 = max(pre_trial_or)-min(pre_trial_or))
+  
+  daie_ca3_data_10%>%
+  drop_na(test_group)%>% 
+  group_by(test_group)%>%
+  summarise(Lower3 = min(post_trial_or),
+          Average3 = mean(post_trial_or),
+          Upper3 = max(post_trial_or),
+          Difference2 = max(post_trial_or)-min(post_trial_or))
+
+static_data<-c(6.0914,5.4188,6.1032,5.4124)
+CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
+barplot(static_data,xlab="Static VR Group",ylab="Trial Scores Mean", main="Static Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Orange", border="Blue", ylim=c(0,10))
+
+animated_data<-c(5.998163265,5.387755102,6.037959184,5.364897959)
+CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
+barplot(animated_data,xlab="Animated VR Group",ylab="Trial Scores Mean", main="Animated Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Red", border="Blue", ylim=c(0,10))
+
+
+control_data<-c(6.2172,5.323,6.2638,5.3314)
+CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
+barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Control Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Green", border="Blue", ylim=c(0,10))
+```
+
+
+
+
+### **Inferential Statistics**
+
+---
+
+#### *Histograms showing the normal distribution between the four Pre and Post assesments*
+
+
+
+```{r , echo=FALSE}
+boxplot(pre_trial_cpss~test_group,data=daie_ca3_data_10,
+        main="Jungian Sandplay",
+        xlab="Test Groups", col="Orange",
+        ylab="Pre Trial CPSS")
+boxplot(post_trial_cpss~test_group,data=daie_ca3_data_10,
+        main="Jungian Sandplay",
+        xlab="Test Groups",col="Red",
+        ylab="Pre Trial CPSS")
+boxplot(pre_trial_or~test_group,data=daie_ca3_data_10,
+        main="Jungian Sandplay",
+        xlab="Test Groups",col="Green",
+        ylab="Pre Trial CPSS")
+boxplot(post_trial_or~test_group,data=daie_ca3_data_10,
+        main="Jungian Sandplay",col="Blue",
+        xlab="Test Groups",
+        ylab="Pre Trial CPSS")
+
+#Histogram for Static Group 
+df2<-subset(daie_ca3_data_10, test_group!="Control" & test_group!="Animated")
+hist(df2$pre_trial_cpss,
+col="orange3",
+main = "Pre Trial CPSS - Static Group",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10,
+xlim = c(0,10),
+ylim = c(0,15))
+hist(df2$post_trial_cpss,
+col="orange1",
+main = "Post Trial CPSS - Static Group",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10,
+xlim = c(0,10),
+ylim = c(0,15))
+hist(df2$pre_trial_or,
+col="orange3",
+main = "Pre Trial OR - Static Group",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10,
+xlim = c(0,10),
+ylim = c(0,15))
+hist(df2$post_trial_or,
+col="orange1",
+main = "Post Trial OR - Static Group",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10,
+xlim = c(0,10),
+ylim = c(0,20))
+
+
+#Histogram for Animated Group 
+df3<-subset(daie_ca3_data_10, test_group!="Static" & test_group!="Control")
+hist(df3$pre_trial_cpss,
+col="red3",
+main = "Pre Trial CPSS - Animated",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10,
+xlim = c(0,10),
+ylim = c(0,15))
+hist(df3$post_trial_cpss,
+col="red",
+main = "Post Trial CPSS - Animated",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10,
+xlim = c(0,10),
+ylim = c(0,15))
+hist(df3$pre_trial_or,
+col="red3",
+main = "Pre Trial OR - Animated",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10,
+xlim = c(0,10),
+ylim = c(0,15))
+hist(df3$post_trial_or,
+col="red",
+main = "Post Trial OR - Animated",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10,
+xlim = c(0,10),
+ylim = c(0,15))
+
+#Histogram for Control Group 
+df1<-subset(daie_ca3_data_10, test_group!="Static" & test_group!="Animated")
+df1
+  
+hist(df1$pre_trial_cpss,
+col="green4",
+main = "Pre Trial CPSS - Control",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10,
+xlim = c(0,10),
+ylim = c(0,10))
+hist(df1$post_trial_cpss,
+col="green",
+main = "Post Trial CPSS - Control",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10,
+xlim = c(0,10),
+ylim = c(0,20))
+hist(df1$pre_trial_or,
+col="green4",
+main = "Pre Trial OR - Control",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10,
+xlim = c(0,10),
+ylim = c(0,15))
+hist(df1$post_trial_or,
+col="green",
+main = "Post Trial OR - Control",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10,
+xlim = c(0,10),
+ylim = c(0,15))
+
+#Normal distribution of overall trial scores
+hist(daie_ca3_data_10$pre_trial_cpss,
+main = "Pre Trial CPSS",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10)
+hist(daie_ca3_data_10$post_trial_cpss,
+main = "Post Trial CPSS",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10)
+hist(daie_ca3_data_10$pre_trial_or,
+main = "Pre Trial OR",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10)
+hist(daie_ca3_data_10$post_trial_or,
+main = "Post Trial OR",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10)
+```
+
+* #### *QQ Plots*
+
+```{r QQ Plot - daie_ca3_data_10, echo=FALSE}
+
+#q plot of Control Group
+qqnorm(df1$pre_trial_cpss,
+       pch = 2, frame = FALSE)
+qqline(df1$pre_trial_cpss,
+       col = "darkorchid", lwd = 1)
+qqnorm(df1$post_trial_cpss,
+       pch = 2, frame = FALSE)
+qqline(df1$post_trial_cpss,
+       col = "darkorchid", lwd = 1)
+qqnorm(df1$pre_trial_or,
+       pch = 2, frame = FALSE)
+qqline(df1$pre_trial_or,
+       col = "darkorchid", lwd = 1)
+qqnorm(df1$post_trial_or,
+       pch = 2, frame = FALSE)
+qqline(df1$post_trial_or,
+       col = "darkorchid", lwd = 1)
+
+#q plot of Static Group
+qqnorm(df2$pre_trial_cpss,
+       pch = 2, frame = FALSE)
+qqline(df2$pre_trial_cpss,
+       col = "darkorchid", lwd = 1)
+qqnorm(df2$post_trial_cpss,
+       pch = 2, frame = FALSE)
+qqline(df2$post_trial_cpss,
+       col = "darkorchid", lwd = 1)
+qqnorm(df2$pre_trial_or,
+       pch = 2, frame = FALSE)
+qqline(df2$pre_trial_or,
+       col = "darkorchid", lwd = 1)
+qqnorm(df2$post_trial_or,
+       pch = 2, frame = FALSE)
+qqline(df2$post_trial_or,
+       col = "darkorchid", lwd = 1)
+
+#q plot of Animated Group
+qqnorm(df3$pre_trial_cpss,
+       pch = 2, frame = FALSE)
+qqline(df3$pre_trial_cpss,
+       col = "darkorchid", lwd = 1)
+qqnorm(df3$post_trial_cpss,
+       pch = 2, frame = FALSE)
+qqline(df3$post_trial_cpss,
+       col = "darkorchid", lwd = 1)
+qqnorm(df3$pre_trial_or,
+       pch = 2, frame = FALSE)
+qqline(df3$pre_trial_or,
+       col = "darkorchid", lwd = 1)
+qqnorm(df3$post_trial_or,
+       pch = 2, frame = FALSE)
+qqline(df3$post_trial_or,
+       col = "darkorchid", lwd = 1)
+
+qqnorm(daie_ca3_data_10$pre_trial_cpss,
+       pch = 2, frame = FALSE)
+qqline(daie_ca3_data_10$pre_trial_cpss,
+       col = "darkorchid", lwd = 1)
+qqnorm(daie_ca3_data_10$post_trial_cpss,
+       pch = 2, frame = FALSE)
+qqline(daie_ca3_data_10$post_trial_cpss,
+       col = "darkorchid", lwd = 1)
+qqnorm(daie_ca3_data_10$pre_trial_or,
+       pch = 2, frame = FALSE)
+qqline(daie_ca3_data_10$pre_trial_or,
+       col = "darkorchid", lwd = 1)
+qqnorm(daie_ca3_data_10$post_trial_or,
+       pch = 2, frame = FALSE)
+qqline(daie_ca3_data_10$post_trial_or,
+       col = "darkorchid", lwd = 1)
+```
+
+
+### **Statistical Tests**
+```{r}
+summary(df1)
+summary(df2)
+summary(df3)
+```
+
+
+
+### **Magnitude and Direction of Results**
+
+# Discussion
+
+### **Outline findings and relation to the hypothesis**
+### **Limitations**
+
+
+
+# References
+
+*
+*
+*
+*
