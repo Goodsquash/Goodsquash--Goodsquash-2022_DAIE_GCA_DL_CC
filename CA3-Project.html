@@ -2544,9 +2544,25 @@ and Post assesments</em></h4>
 ##  Mean   :5.388   Mean   :6.038   Mean   :5.365  
 ##  3rd Qu.:6.260   3rd Qu.:6.640   3rd Qu.:6.100  
 ##  Max.   :7.400   Max.   :9.160   Max.   :7.390</code></pre>
-<pre class="r"><code>  sample.mean &lt;- mean(daie_ca3_data_10$pre_trial_cpss)
-  print(sample.mean)</code></pre>
+<pre class="r"><code>sample.mean &lt;- mean(daie_ca3_data_10$pre_trial_cpss)
+print(sample.mean)</code></pre>
 <pre><code>## [1] 6.051946</code></pre>
+<pre class="r"><code>sample.n &lt;- length(daie_ca3_data_10$pre_trial_cpss)
+sample.sd &lt;- sd(daie_ca3_data_10$pre_trial_cpss)
+sample.se &lt;- sample.sd/sqrt(sample.n)
+print(sample.se)</code></pre>
+<pre><code>## [1] 0.08357602</code></pre>
+<pre class="r"><code>alpha = 0.05
+degrees.freedom = sample.n - 1
+t.score = qt(p=alpha/2, df=degrees.freedom,lower.tail=F)
+print(t.score)</code></pre>
+<pre><code>## [1] 1.976122</code></pre>
+<pre class="r"><code>margin.error &lt;- t.score * sample.se
+  
+lower.bound &lt;- sample.mean - margin.error
+upper.bound &lt;- sample.mean + margin.error
+print(c(lower.bound,upper.bound))</code></pre>
+<pre><code>## [1] 5.886790 6.217103</code></pre>
 </div>
 <div id="magnitude-and-direction-of-results" class="section level3">
 <h3><strong>Magnitude and Direction of Results</strong></h3>
