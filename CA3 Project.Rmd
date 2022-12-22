@@ -226,15 +226,15 @@ boxplot(pre_trial_cpss~test_group,data=daie_ca3_data_10,
 boxplot(post_trial_cpss~test_group,data=daie_ca3_data_10,
         main="Jungian Sandplay",
         xlab="Test Groups",col="Red",
-        ylab="Pre Trial CPSS")
+        ylab="Post Trial CPSS")
 boxplot(pre_trial_or~test_group,data=daie_ca3_data_10,
         main="Jungian Sandplay",
         xlab="Test Groups",col="Green",
-        ylab="Pre Trial CPSS")
+        ylab="Pre Trial OR")
 boxplot(post_trial_or~test_group,data=daie_ca3_data_10,
         main="Jungian Sandplay",col="Blue",
         xlab="Test Groups",
-        ylab="Pre Trial CPSS")
+        ylab="Post Trial OR")
 
 #Histogram for Static Group 
 df2<-subset(daie_ca3_data_10, test_group!="Control" & test_group!="Animated")
@@ -449,6 +449,11 @@ qqline(daie_ca3_data_10$post_trial_or,
 summary(df1)
 summary(df2)
 summary(df3)
+
+  sample.mean <- mean(daie_ca3_data_10$pre_trial_cpss)
+  print(sample.mean)
+
+
 ```
 
 
