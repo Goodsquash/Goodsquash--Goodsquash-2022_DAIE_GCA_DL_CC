@@ -119,8 +119,6 @@ daie_ca3_data_10 <- read_csv("daie_ca3_data_10.csv")
 head(daie_ca3_data_10,10)
 summary(daie_ca3_data_10)
 tail(daie_ca3_data_10,5)
-
-
 #install.packages("tidyverse")
 library(tidyverse)
 data()
@@ -192,16 +190,12 @@ daie_ca3_data_10%>%
           Average3 = mean(post_trial_or),
           Upper3 = max(post_trial_or),
           Difference2 = max(post_trial_or)-min(post_trial_or))
-
 static_data<-c(6.0914,5.4188,6.1032,5.4124)
 CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
 barplot(static_data,xlab="Static VR Group",ylab="Trial Scores Mean", main="Static Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Orange", border="Blue", ylim=c(0,10))
-
 animated_data<-c(5.998163265,5.387755102,6.037959184,5.364897959)
 CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
 barplot(animated_data,xlab="Animated VR Group",ylab="Trial Scores Mean", main="Animated Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Red", border="Blue", ylim=c(0,10))
-
-
 control_data<-c(6.2172,5.323,6.2638,5.3314)
 CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
 barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Control Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Green", border="Blue", ylim=c(0,10))
@@ -226,16 +220,15 @@ boxplot(pre_trial_cpss~test_group,data=daie_ca3_data_10,
 boxplot(post_trial_cpss~test_group,data=daie_ca3_data_10,
         main="Jungian Sandplay",
         xlab="Test Groups",col="Red",
-        ylab="Pre Trial CPSS")
+        ylab="Post Trial CPSS")
 boxplot(pre_trial_or~test_group,data=daie_ca3_data_10,
         main="Jungian Sandplay",
         xlab="Test Groups",col="Green",
-        ylab="Pre Trial CPSS")
+        ylab="Pre Trial OR")
 boxplot(post_trial_or~test_group,data=daie_ca3_data_10,
         main="Jungian Sandplay",col="Blue",
         xlab="Test Groups",
-        ylab="Pre Trial CPSS")
-
+        ylab="Post Trial OR")
 #Histogram for Static Group 
 df2<-subset(daie_ca3_data_10, test_group!="Control" & test_group!="Animated")
 hist(df2$pre_trial_cpss,
@@ -270,8 +263,6 @@ ylab = "Frequency",
 breaks = 10,
 xlim = c(0,10),
 ylim = c(0,20))
-
-
 #Histogram for Animated Group 
 df3<-subset(daie_ca3_data_10, test_group!="Static" & test_group!="Control")
 hist(df3$pre_trial_cpss,
@@ -306,7 +297,6 @@ ylab = "Frequency",
 breaks = 10,
 xlim = c(0,10),
 ylim = c(0,15))
-
 #Histogram for Control Group 
 df1<-subset(daie_ca3_data_10, test_group!="Static" & test_group!="Animated")
 df1
@@ -343,7 +333,6 @@ ylab = "Frequency",
 breaks = 10,
 xlim = c(0,10),
 ylim = c(0,15))
-
 #Normal distribution of overall trial scores
 hist(daie_ca3_data_10$pre_trial_cpss,
 main = "Pre Trial CPSS",
@@ -370,7 +359,6 @@ breaks = 10)
 * #### *QQ Plots*
 
 ```{r QQ Plot - daie_ca3_data_10, echo=FALSE}
-
 #q plot of Control Group
 qqnorm(df1$pre_trial_cpss,
        pch = 2, frame = FALSE)
@@ -388,7 +376,6 @@ qqnorm(df1$post_trial_or,
        pch = 2, frame = FALSE)
 qqline(df1$post_trial_or,
        col = "darkorchid", lwd = 1)
-
 #q plot of Static Group
 qqnorm(df2$pre_trial_cpss,
        pch = 2, frame = FALSE)
@@ -406,7 +393,6 @@ qqnorm(df2$post_trial_or,
        pch = 2, frame = FALSE)
 qqline(df2$post_trial_or,
        col = "darkorchid", lwd = 1)
-
 #q plot of Animated Group
 qqnorm(df3$pre_trial_cpss,
        pch = 2, frame = FALSE)
@@ -424,7 +410,6 @@ qqnorm(df3$post_trial_or,
        pch = 2, frame = FALSE)
 qqline(df3$post_trial_or,
        col = "darkorchid", lwd = 1)
-
 qqnorm(daie_ca3_data_10$pre_trial_cpss,
        pch = 2, frame = FALSE)
 qqline(daie_ca3_data_10$pre_trial_cpss,
@@ -449,6 +434,8 @@ qqline(daie_ca3_data_10$post_trial_or,
 summary(df1)
 summary(df2)
 summary(df3)
+  sample.mean <- mean(daie_ca3_data_10$pre_trial_cpss)
+  print(sample.mean)
 ```
 
 
@@ -464,6 +451,7 @@ summary(df3)
 
 # References
 
+*
 *
 *
 *
