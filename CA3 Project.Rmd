@@ -436,6 +436,7 @@ summary(df2)
 summary(df3)
   sample.mean <- mean(daie_ca3_data_10$pre_trial_cpss)
   print(sample.mean)
+<<<<<<< HEAD
 
   
   sample.n <- length(daie_ca3_data_10$pre_trial_cpss)
@@ -455,6 +456,8 @@ summary(df3)
   print(c(lower.bound,upper.bound))
   
   
+=======
+>>>>>>> 1b20ad9c3349b12765d3557a7baf8e55694c6b25
 ```
 
 
