@@ -408,7 +408,9 @@ ylim = c(0,15))
 
 
 * ### *Normal distribution of overall trial scores*
+To check for normal distribution in the population a histogram was created for the test groups row of numbers. To create this the following function was used.   
 
+This was applied to the 4 stages of the assessments used on the participants. 
 ```{r , echo=FALSE}
 
 hist(daie_ca3_data_10$pre_trial_cpss,
@@ -439,6 +441,8 @@ xlab = "Score",
 ylab = "Frequency",
 breaks = 10)
 ```
+
+The data was shown to be normally distributed across the 4 trials
 
 * ### *QQ Plots Groups and Trial type*
 
@@ -496,7 +500,7 @@ qqline(df3$post_trial_or,
        col = "darkorchid", lwd = 1)
 ```
 
-
+The data looks to be normally distibuted across the QQ plots 
 * ### *QQ Plots Trials*
 
 
@@ -541,9 +545,6 @@ qqline(daie_ca3_data_10$post_trial_or,
 *Confidence Interval for Pre Trial CPSS*
 ```{r, echo=FALSE}
 
-
-
-
 sample.mean <- mean(daie_ca3_data_10$pre_trial_cpss)
 print(sample.mean)
 
@@ -586,10 +587,6 @@ margin.error <- t.score * sample.se
 lower.bound <- sample.mean - margin.error
 upper.bound <- sample.mean + margin.error
 print(c(lower.bound,upper.bound))
-
-
-
-
 
 ```
 
@@ -643,6 +640,8 @@ print(c(lower.bound,upper.bound))
 ### **Magnitude and Direction of Results**
 
 # Discussion
+
+The 
 
 ### **Outline findings and relation to the hypothesis**
 ### **Limitations**
