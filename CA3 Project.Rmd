@@ -652,7 +652,9 @@ print(c(lower.bound,upper.bound))
 
 The experiment appears to show that there is a measurable positive effect in the use of VR augmented therapy.
 
+### **Limitations**
 
+We found no confounding variables within the study.
 
 
 # References
