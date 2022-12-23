@@ -78,7 +78,7 @@ If this experiment shows a similar positive therapeutic effect to non-VR Jungian
 
 ### **Topic and Context**
 
-Does a virtual Jungian sandplay environment have a meaningful effect on CPSS scores in comparison to CBT.  
+Does a virtual Jungian Sandplay environment have a meaningful effect on CPSS scores in comparison to CBT.  
 
 ### **Rationale**
 
@@ -447,6 +447,8 @@ summary(df3)
 sample.mean <- mean(daie_ca3_data_10$pre_trial_cpss)
 print(sample.mean)
 
+
+#Confidence Interval for Pre Trial CPSS
   
 sample.n <- length(daie_ca3_data_10$pre_trial_cpss)
 sample.sd <- sd(daie_ca3_data_10$pre_trial_cpss)
@@ -464,7 +466,68 @@ lower.bound <- sample.mean - margin.error
 upper.bound <- sample.mean + margin.error
 print(c(lower.bound,upper.bound))
   
+
+#Confidence Interval for Post Trial CPSS
   
+sample.n <- length(daie_ca3_data_10$post_trial_cpss)
+sample.sd <- sd(daie_ca3_data_10$post_trial_cpss)
+sample.se <- sample.sd/sqrt(sample.n)
+print(sample.se)
+  
+alpha = 0.05
+degrees.freedom = sample.n - 1
+t.score = qt(p=alpha/2, df=degrees.freedom,lower.tail=F)
+print(t.score)
+  
+margin.error <- t.score * sample.se
+  
+lower.bound <- sample.mean - margin.error
+upper.bound <- sample.mean + margin.error
+print(c(lower.bound,upper.bound))
+
+
+
+
+#Confidence Interval for Pre Trial OR
+
+sample.n <- length(daie_ca3_data_10$pre_trial_or)
+sample.sd <- sd(daie_ca3_data_10$pre_trial_or)
+sample.se <- sample.sd/sqrt(sample.n)
+print(sample.se)
+  
+alpha = 0.05
+degrees.freedom = sample.n - 1
+t.score = qt(p=alpha/2, df=degrees.freedom,lower.tail=F)
+print(t.score)
+  
+margin.error <- t.score * sample.se
+  
+lower.bound <- sample.mean - margin.error
+upper.bound <- sample.mean + margin.error
+print(c(lower.bound,upper.bound))
+
+
+
+#Confidence Interval for Post Trial OR
+
+sample.n <- length(daie_ca3_data_10$post_trial_or)
+sample.sd <- sd(daie_ca3_data_10$post_trial_or)
+sample.se <- sample.sd/sqrt(sample.n)
+print(sample.se)
+  
+alpha = 0.05
+degrees.freedom = sample.n - 1
+t.score = qt(p=alpha/2, df=degrees.freedom,lower.tail=F)
+print(t.score)
+  
+margin.error <- t.score * sample.se
+  
+lower.bound <- sample.mean - margin.error
+upper.bound <- sample.mean + margin.error
+print(c(lower.bound,upper.bound))
+
+
+
 ```
 
 

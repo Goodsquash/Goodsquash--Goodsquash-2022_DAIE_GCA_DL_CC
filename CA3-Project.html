@@ -11,7 +11,7 @@
 
 <meta name="author" content="Conor Crean &amp; Daniel Lacey" />
 
-<meta name="date" content="2022-12-22" />
+<meta name="date" content="2022-12-23" />
 
 <title>CA3 - DAIE Project</title>
 
@@ -1499,7 +1499,7 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">CA3 - DAIE Project</h1>
 <h4 class="author">Conor Crean &amp; Daniel Lacey</h4>
-<h4 class="date">2022-12-22</h4>
+<h4 class="date">2022-12-23</h4>
 
 </div>
 
@@ -1611,7 +1611,7 @@ alleviate PTSD.</p>
 <h1>Introduction</h1>
 <div id="topic-and-context" class="section level3">
 <h3><strong>Topic and Context</strong></h3>
-<p>Does a virtual Jungian sandplay environment have a meaningful effect
+<p>Does a virtual Jungian Sandplay environment have a meaningful effect
 on CPSS scores in comparison to CBT.</p>
 </div>
 <div id="rationale" class="section level3">
@@ -1726,7 +1726,7 @@ post-therapy.</p></li>
 ## # … with abbreviated variable name ¹​post_trial_or</code></pre>
 <pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
 ## ✔ ggplot2 3.4.0      ✔ dplyr   1.0.10
-## ✔ tibble  3.1.8      ✔ stringr 1.4.1 
+## ✔ tibble  3.1.8      ✔ stringr 1.5.0 
 ## ✔ tidyr   1.2.1      ✔ forcats 0.5.2 
 ## ✔ purrr   0.3.5      
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
@@ -2547,7 +2547,9 @@ and Post assesments</em></h4>
 <pre class="r"><code>sample.mean &lt;- mean(daie_ca3_data_10$pre_trial_cpss)
 print(sample.mean)</code></pre>
 <pre><code>## [1] 6.051946</code></pre>
-<pre class="r"><code>sample.n &lt;- length(daie_ca3_data_10$pre_trial_cpss)
+<pre class="r"><code>#Confidence Interval for Pre Trial CPSS
+  
+sample.n &lt;- length(daie_ca3_data_10$pre_trial_cpss)
 sample.sd &lt;- sd(daie_ca3_data_10$pre_trial_cpss)
 sample.se &lt;- sample.sd/sqrt(sample.n)
 print(sample.se)</code></pre>
@@ -2563,6 +2565,60 @@ lower.bound &lt;- sample.mean - margin.error
 upper.bound &lt;- sample.mean + margin.error
 print(c(lower.bound,upper.bound))</code></pre>
 <pre><code>## [1] 5.886790 6.217103</code></pre>
+<pre class="r"><code>#Confidence Interval for Post Trial CPSS
+  
+sample.n &lt;- length(daie_ca3_data_10$post_trial_cpss)
+sample.sd &lt;- sd(daie_ca3_data_10$post_trial_cpss)
+sample.se &lt;- sample.sd/sqrt(sample.n)
+print(sample.se)</code></pre>
+<pre><code>## [1] 0.09737781</code></pre>
+<pre class="r"><code>alpha = 0.05
+degrees.freedom = sample.n - 1
+t.score = qt(p=alpha/2, df=degrees.freedom,lower.tail=F)
+print(t.score)</code></pre>
+<pre><code>## [1] 1.976122</code></pre>
+<pre class="r"><code>margin.error &lt;- t.score * sample.se
+  
+lower.bound &lt;- sample.mean - margin.error
+upper.bound &lt;- sample.mean + margin.error
+print(c(lower.bound,upper.bound))</code></pre>
+<pre><code>## [1] 5.859516 6.244377</code></pre>
+<pre class="r"><code>#Confidence Interval for Pre Trial OR
+
+sample.n &lt;- length(daie_ca3_data_10$pre_trial_or)
+sample.sd &lt;- sd(daie_ca3_data_10$pre_trial_or)
+sample.se &lt;- sample.sd/sqrt(sample.n)
+print(sample.se)</code></pre>
+<pre><code>## [1] 0.08697303</code></pre>
+<pre class="r"><code>alpha = 0.05
+degrees.freedom = sample.n - 1
+t.score = qt(p=alpha/2, df=degrees.freedom,lower.tail=F)
+print(t.score)</code></pre>
+<pre><code>## [1] 1.976122</code></pre>
+<pre class="r"><code>margin.error &lt;- t.score * sample.se
+  
+lower.bound &lt;- sample.mean - margin.error
+upper.bound &lt;- sample.mean + margin.error
+print(c(lower.bound,upper.bound))</code></pre>
+<pre><code>## [1] 5.880077 6.223816</code></pre>
+<pre class="r"><code>#Confidence Interval for Post Trial OR
+
+sample.n &lt;- length(daie_ca3_data_10$post_trial_or)
+sample.sd &lt;- sd(daie_ca3_data_10$post_trial_or)
+sample.se &lt;- sample.sd/sqrt(sample.n)
+print(sample.se)</code></pre>
+<pre><code>## [1] 0.09226614</code></pre>
+<pre class="r"><code>alpha = 0.05
+degrees.freedom = sample.n - 1
+t.score = qt(p=alpha/2, df=degrees.freedom,lower.tail=F)
+print(t.score)</code></pre>
+<pre><code>## [1] 1.976122</code></pre>
+<pre class="r"><code>margin.error &lt;- t.score * sample.se
+  
+lower.bound &lt;- sample.mean - margin.error
+upper.bound &lt;- sample.mean + margin.error
+print(c(lower.bound,upper.bound))</code></pre>
+<pre><code>## [1] 5.869617 6.234276</code></pre>
 </div>
 <div id="magnitude-and-direction-of-results" class="section level3">
 <h3><strong>Magnitude and Direction of Results</strong></h3>
