@@ -1,0 +1,37 @@
+\contentsline {section}{\textbf {Data Analytics for Immersive Environments}}{2}{section*.2}%
+\contentsline {subsubsection}{\emph {Descriptive and Inferential Analysis of a Jungian Sandplay VR Project}}{2}{section*.3}%
+\contentsline {subsection}{\par \vfil \penalty -\@M }{3}{section*.4}%
+\contentsline {subparagraph}{\emph {Abstract:}}{3}{section*.6}%
+\contentsline {subparagraph}{\emph {Introduction:}}{3}{section*.7}%
+\contentsline {subparagraph}{\emph {Method:}}{3}{section*.8}%
+\contentsline {subparagraph}{\emph {Results:}}{3}{section*.9}%
+\contentsline {subparagraph}{\emph {Discussion:}}{3}{section*.10}%
+\contentsline {section}{Abstract}{3}{section*.11}%
+\contentsline {subsubsection}{\textbf {Aim and Rationale}}{3}{section*.12}%
+\contentsline {subsubsection}{\textbf {Participants and Setting}}{4}{section*.13}%
+\contentsline {subsubsection}{\textbf {Experiment Design}}{4}{section*.14}%
+\contentsline {subsubsection}{\textbf {Results Gathering}}{4}{section*.15}%
+\contentsline {subsubsection}{\textbf {Major Findings}}{4}{section*.16}%
+\contentsline {subsubsection}{\textbf {Findings/Implications}}{4}{section*.17}%
+\contentsline {section}{Introduction}{4}{section*.18}%
+\contentsline {subsubsection}{\textbf {Topic and Context}}{4}{section*.19}%
+\contentsline {subsubsection}{\textbf {Rationale}}{4}{section*.20}%
+\contentsline {subsubsection}{\textbf {Hypothesis}}{4}{section*.21}%
+\contentsline {section}{Method}{4}{section*.22}%
+\contentsline {subsubsection}{\textbf {Participants}}{4}{section*.23}%
+\contentsline {subsubsection}{\textbf {Design}}{5}{section*.24}%
+\contentsline {subsubsection}{\textbf {Materials}}{5}{section*.25}%
+\contentsline {subsubsection}{\textbf {Procedure}}{5}{section*.26}%
+\contentsline {section}{Results}{5}{section*.27}%
+\contentsline {subparagraph}{\emph {Cleaning data}}{5}{section*.28}%
+\contentsline {subsubsection}{\textbf {Descriptive Statistics}}{7}{section*.29}%
+\contentsline {subsubsection}{\textbf {Inferential Statistics}}{11}{section*.30}%
+\contentsline {subsubsection}{\emph {Histograms showing the normal distribution between the four Pre and Post assessments}}{11}{section*.31}%
+\contentsline {subsubsection}{\emph {Normal distribution of overall trial scores}}{27}{section*.32}%
+\contentsline {subsubsection}{\emph {QQ Plots Groups and Trial type}}{32}{section*.33}%
+\contentsline {subsubsection}{\textbf {Statistical Tests}}{47}{section*.34}%
+\contentsline {subsubsection}{\textbf {Magnitude and Direction of Results}}{48}{section*.35}%
+\contentsline {section}{Discussion}{48}{section*.36}%
+\contentsline {subsubsection}{\textbf {Outline findings and relation to the hypothesis}}{48}{section*.37}%
+\contentsline {subsubsection}{\textbf {Limitations}}{48}{section*.38}%
+\contentsline {section}{References}{48}{section*.39}%
