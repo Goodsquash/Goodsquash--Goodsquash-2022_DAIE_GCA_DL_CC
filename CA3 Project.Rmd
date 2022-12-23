@@ -124,16 +124,30 @@ The control group just used a pen and board to self-report their symptoms whilst
 # Results
 
 ##### *Cleaning data*
+Before the data set could be properly analyzed first it needed to be cleaned to remove any errors or missing data points. 
+
+The tidyverse package was installed, tidyverse is a collection of open-source packages used for data import, tidying, manipulation, and data visualization. 
+
 ```{r , echo=FALSE}
 library(readr)
 daie_ca3_data_10 <- read_csv("daie_ca3_data_10.csv")
 #View(daie_ca3_data_10)
-head(daie_ca3_data_10,10)
+
 summary(daie_ca3_data_10)
-tail(daie_ca3_data_10,5)
+
 #install.packages("tidyverse")
 library(tidyverse)
 data()
+```
+
+The next step involved looking at the different headings in the data set (gender, test_group ,etc.).  
+
+Then the headings were checked for unique values. From the data set the test_group headings displayed four unique variables instead of the three expected. A heading labelled “Cotrol” was the fourth unexpected variable, this was clearly a mistake in the spelling of Control.  
+
+This was then changed using the str_replace function which switched the string with the correct spelling. 
+
+
+```{r , echo=FALSE}
 glimpse(daie_ca3_data_10)
 class(daie_ca3_data_10$gender)
 unique(daie_ca3_data_10$gender)
@@ -142,15 +156,28 @@ unique(daie_ca3_data_10$test_group)
 daie_ca3_data_10$test_group <- str_replace(daie_ca3_data_10$test_group,"Cotrol", "Control")
 #Checking the Group values
 unique(daie_ca3_data_10$test_group)
+```
+
+The next step was checking for rows with missing values and removing those rows from the data to avoid errors in the results. From the summary function we see that there is one missing value in the pre_trail_or group. 
+
+```{r , echo=FALSE}
 #Checking for null values in the data
-is.null(daie_ca3_data_10)
-is.null(daie_ca3_data_10$pre_trial_cpss)
-is.null(daie_ca3_data_10$post_trial_cpss)
+
 is.null(daie_ca3_data_10$pre_trial_or)
-is.null(daie_ca3_data_10$post_trial_or)
-is.na(daie_ca3_data_10)
+
+```
+
+
+The entire data set was checked by using the is.na function on the excel file. That printed a long list False results only showing one True statement in row 144 under the pre_trail_or heading meaning that is where the missing value was located. 
+
+ 
+
+To remove the row the following statement was used. 
 daie_ca3_data_10 <-daie_ca3_data_10 %>% drop_na()
-is.na(daie_ca3_data_10)
+
+```{r , echo=FALSE}
+daie_ca3_data_10 <-daie_ca3_data_10 %>% drop_na()
+
 #Checked for negative values
 sum(daie_ca3_data_10 < 0)
 #Checked for values greater than 10
@@ -164,6 +191,9 @@ sum(daie_ca3_data_10$post_trial_or > 10)
 
 
 ### **Descriptive Statistics**
+
+Below is the summary of the results from the patient's data. From an initial look at the statistical analysis that the mean output for pre trail Observer-Rated (OR) and pre trail Child PTSD Symptom Scale Self Report Version had higher values than the post trail results. This is for the overall group; further analysis is needed to find the values for each group.  
+
 
 ```{r, echo=TRUE}
 #Show 10 of the first few values of the data set
@@ -220,27 +250,39 @@ barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Contro
 
 ---
 
-#### *Histograms showing the normal distribution between the four Pre and Post assesments*
+#### *Histograms showing the normal distribution between the four Pre and Post assessments*
 
 
-
+* #### *box plots of the three groups Pre and Post trials*
 ```{r , echo=FALSE}
+
+
 boxplot(pre_trial_cpss~test_group,data=daie_ca3_data_10,
         main="Jungian Sandplay",
         xlab="Test Groups", col="Orange",
         ylab="Pre Trial CPSS")
+
+
 boxplot(post_trial_cpss~test_group,data=daie_ca3_data_10,
         main="Jungian Sandplay",
         xlab="Test Groups",col="Red",
         ylab="Post Trial CPSS")
+
+
 boxplot(pre_trial_or~test_group,data=daie_ca3_data_10,
         main="Jungian Sandplay",
         xlab="Test Groups",col="Green",
         ylab="Pre Trial OR")
+
+
 boxplot(post_trial_or~test_group,data=daie_ca3_data_10,
         main="Jungian Sandplay",col="Blue",
         xlab="Test Groups",
         ylab="Post Trial OR")
+```
+
+
+```{r , echo=FALSE}
 #Histogram for Static Group 
 df2<-subset(daie_ca3_data_10, test_group!="Control" & test_group!="Animated")
 hist(df2$pre_trial_cpss,
@@ -363,15 +405,21 @@ ylim = c(0,15))
 
 
 
-#Normal distribution of overall trial scores
+
+```
 
 
+* ### *Normal distribution of overall trial scores*
+
+```{r , echo=FALSE}
 
 hist(daie_ca3_data_10$pre_trial_cpss,
 main = "Pre Trial CPSS",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 10)
+
+
 hist(daie_ca3_data_10$post_trial_cpss,
 main = "Post Trial CPSS",
 xlab = "Score",
@@ -379,12 +427,14 @@ ylab = "Frequency",
 breaks = 10)
 
 
-
 hist(daie_ca3_data_10$pre_trial_or,
 main = "Pre Trial OR",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 10)
+
+
+
 hist(daie_ca3_data_10$post_trial_or,
 main = "Post Trial OR",
 xlab = "Score",
@@ -392,7 +442,7 @@ ylab = "Frequency",
 breaks = 10)
 ```
 
-* #### *QQ Plots*
+* ### *QQ Plots Groups and Trial type*
 
 ```{r QQ Plot - Groups, echo=FALSE}
 #q plot of Control Group
@@ -449,21 +499,37 @@ qqline(df3$post_trial_or,
 ```
 
 
-* #### *QQ Plots*
+* ### *QQ Plots Trials*
 
+
+*QQ Plot - Pre Trial CPSS*
 ```{r QQ Plot - daie_ca3_data_10, echo=FALSE}
+
+
 qqnorm(daie_ca3_data_10$pre_trial_cpss,
        pch = 2, frame = FALSE)
 qqline(daie_ca3_data_10$pre_trial_cpss,
        col = "darkorchid", lwd = 1)
+```
+
+*QQ Plot - Post Trial CPSS*
+```{r QQ Plot - daie_ca3_data_10 Post CPSS, echo=FALSE}
 qqnorm(daie_ca3_data_10$post_trial_cpss,
        pch = 2, frame = FALSE)
 qqline(daie_ca3_data_10$post_trial_cpss,
        col = "darkorchid", lwd = 1)
+```
+
+*QQ Plot - Pre Trial OR*
+```{r QQ Plot - daie_ca3_data_10 Pre OR, echo=FALSE}
 qqnorm(daie_ca3_data_10$pre_trial_or,
        pch = 2, frame = FALSE)
 qqline(daie_ca3_data_10$pre_trial_or,
        col = "darkorchid", lwd = 1)
+```
+
+*QQ Plot - Post Trial OR*
+```{r QQ Plot - daie_ca3_data_10 Post OR, echo=FALSE}
 qqnorm(daie_ca3_data_10$post_trial_or,
        pch = 2, frame = FALSE)
 qqline(daie_ca3_data_10$post_trial_or,
@@ -472,14 +538,18 @@ qqline(daie_ca3_data_10$post_trial_or,
 
 
 ### **Statistical Tests**
+
+
+*Confidence Interval for Pre Trial CPSS*
 ```{r, echo=FALSE}
+
+
+
 
 sample.mean <- mean(daie_ca3_data_10$pre_trial_cpss)
 print(sample.mean)
 
 
-#Confidence Interval for Pre Trial CPSS
-  
 sample.n <- length(daie_ca3_data_10$pre_trial_cpss)
 sample.sd <- sd(daie_ca3_data_10$pre_trial_cpss)
 sample.se <- sample.sd/sqrt(sample.n)
@@ -497,8 +567,12 @@ upper.bound <- sample.mean + margin.error
 print(c(lower.bound,upper.bound))
   
 
-#Confidence Interval for Post Trial CPSS
-  
+
+```
+
+*Confidence Interval for Post Trial CPSS*
+
+```{r, echo=FALSE}
 sample.n <- length(daie_ca3_data_10$post_trial_cpss)
 sample.sd <- sd(daie_ca3_data_10$post_trial_cpss)
 sample.se <- sample.sd/sqrt(sample.n)
@@ -518,8 +592,11 @@ print(c(lower.bound,upper.bound))
 
 
 
-#Confidence Interval for Pre Trial OR
 
+```
+
+*Confidence Interval for Pre Trial OR*
+```{r, echo=FALSE}
 sample.n <- length(daie_ca3_data_10$pre_trial_or)
 sample.sd <- sd(daie_ca3_data_10$pre_trial_or)
 sample.se <- sample.sd/sqrt(sample.n)
@@ -538,8 +615,11 @@ print(c(lower.bound,upper.bound))
 
 
 
-#Confidence Interval for Post Trial OR
 
+```
+
+*Confidence Interval for Post Trial OR*
+```{r, echo=FALSE}
 sample.n <- length(daie_ca3_data_10$post_trial_or)
 sample.sd <- sd(daie_ca3_data_10$post_trial_or)
 sample.se <- sample.sd/sqrt(sample.n)
