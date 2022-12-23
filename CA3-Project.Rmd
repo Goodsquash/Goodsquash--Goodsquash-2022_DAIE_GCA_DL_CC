@@ -3,12 +3,12 @@ title: "CA3 - DAIE Project"
 author: "Conor Crean & Daniel Lacey"
 date: "`r Sys.Date()`"
 output:
-  pdf_document:
-    toc: yes
   html_document:
     theme: journal
     toc: yes
     toc_float: yes
+  pdf_document:
+    toc: yes
 ---
 
 
@@ -236,6 +236,7 @@ daie_ca3_data_10%>%
           Average3 = mean(post_trial_or),
           Upper3 = max(post_trial_or),
           Difference2 = max(post_trial_or)-min(post_trial_or))
+
 static_data<-c(6.0914,5.4188,6.1032,5.4124)
 CPSSOR<-c("Pre Trial CPSS","Post Trial CPSS","Pre Trial OR","Post Trial OR")
 barplot(static_data,xlab="Static VR Group",ylab="Trial Scores Mean", main="Static Group - Pre and Post Trial CPSS and OR Scores", names.arg=CPSSOR, col="Orange", border="Blue", ylim=c(0,10))
@@ -286,83 +287,9 @@ boxplot(post_trial_or~test_group,data=daie_ca3_data_10,
 
 
 ```{r , echo=FALSE}
-#Histogram for Static Group 
-df2<-subset(daie_ca3_data_10, test_group!="Control" & test_group!="Animated")
-hist(df2$pre_trial_cpss,
-col="orange3",
-main = "Pre Trial CPSS - Static Group",
-xlab = "Score",
-ylab = "Frequency",
-breaks = 10,
-xlim = c(0,10),
-ylim = c(0,15))
-hist(df2$post_trial_cpss,
-col="orange1",
-main = "Post Trial CPSS - Static Group",
-xlab = "Score",
-ylab = "Frequency",
-breaks = 10,
-xlim = c(0,10),
-ylim = c(0,15))
-hist(df2$pre_trial_or,
-col="orange3",
-main = "Pre Trial OR - Static Group",
-xlab = "Score",
-ylab = "Frequency",
-breaks = 10,
-xlim = c(0,10),
-ylim = c(0,15))
-hist(df2$post_trial_or,
-col="orange1",
-main = "Post Trial OR - Static Group",
-xlab = "Score",
-ylab = "Frequency",
-breaks = 10,
-xlim = c(0,10),
-ylim = c(0,20))
-#Histogram for Animated Group 
-df3<-subset(daie_ca3_data_10, test_group!="Static" & test_group!="Control")
-hist(df3$pre_trial_cpss,
-col="red3",
-main = "Pre Trial CPSS - Animated",
-xlab = "Score",
-ylab = "Frequency",
-breaks = 10,
-xlim = c(0,10),
-ylim = c(0,15))
-hist(df3$post_trial_cpss,
-col="red",
-main = "Post Trial CPSS - Animated",
-xlab = "Score",
-ylab = "Frequency",
-breaks = 10,
-xlim = c(0,10),
-ylim = c(0,15))
-hist(df3$pre_trial_or,
-col="red3",
-
-
-main = "Pre Trial OR - Animated",
-xlab = "Score",
-ylab = "Frequency",
-breaks = 10,
-xlim = c(0,10),
-ylim = c(0,15))
-hist(df3$post_trial_or,
-col="red",
-
-
-
-
-main = "Post Trial OR - Animated",
-xlab = "Score",
-ylab = "Frequency",
-breaks = 10,
-xlim = c(0,10),
-ylim = c(0,15))
 #Histogram for Control Group 
 df1<-subset(daie_ca3_data_10, test_group!="Static" & test_group!="Animated")
-
+summary(df1)
   
 hist(df1$pre_trial_cpss,
 col="green4",
@@ -406,7 +333,86 @@ breaks = 10,
 xlim = c(0,10),
 ylim = c(0,15))
 
+#Histogram for Static Group 
+df2<-subset(daie_ca3_data_10, test_group!="Control" & test_group!="Animated")
 
+summary(df2)
+
+hist(df2$pre_trial_cpss,
+col="orange3",
+main = "Pre Trial CPSS - Static Group",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10,
+xlim = c(0,10),
+ylim = c(0,15))
+hist(df2$post_trial_cpss,
+col="orange1",
+main = "Post Trial CPSS - Static Group",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10,
+xlim = c(0,10),
+ylim = c(0,15))
+hist(df2$pre_trial_or,
+col="orange3",
+main = "Pre Trial OR - Static Group",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10,
+xlim = c(0,10),
+ylim = c(0,15))
+hist(df2$post_trial_or,
+col="orange1",
+main = "Post Trial OR - Static Group",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10,
+xlim = c(0,10),
+ylim = c(0,20))
+#Histogram for Animated Group 
+df3<-subset(daie_ca3_data_10, test_group!="Static" & test_group!="Control")
+
+summary(df3)
+
+hist(df3$pre_trial_cpss,
+col="red3",
+main = "Pre Trial CPSS - Animated",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10,
+xlim = c(0,10),
+ylim = c(0,15))
+hist(df3$post_trial_cpss,
+col="red",
+main = "Post Trial CPSS - Animated",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10,
+xlim = c(0,10),
+ylim = c(0,15))
+hist(df3$pre_trial_or,
+col="red3",
+
+
+main = "Pre Trial OR - Animated",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10,
+xlim = c(0,10),
+ylim = c(0,15))
+hist(df3$post_trial_or,
+col="red",
+
+
+
+
+main = "Post Trial OR - Animated",
+xlab = "Score",
+ylab = "Frequency",
+breaks = 10,
+xlim = c(0,10),
+ylim = c(0,15))
 
 
 ```
@@ -448,6 +454,8 @@ breaks = 10)
 ```
 
 The data was shown to be normally distributed across the 4 trials
+The normality test shows that the data is normally distributed since the graph bars are symmetrical in each of the graphs for the Trial Data. 
+
 
 * ### *QQ Plots Groups and Trial type*
 
@@ -638,17 +646,23 @@ print(c(lower.bound,upper.bound))
 
 
 ```
-
+The qq plots also show that the data is normally distributed as the plot points are close to the line of the chart. 
 
 
 ### **Magnitude and Direction of Results**
+The results of the box plot show a decrease in the quartile ranges as the scale shows that the middle quartile is lower for all three groups int the Post CPSS group. 
+The same is shown for the Pre and Post OR group 
+
 
 # Discussion
 
 
 ### **Outline findings and relation to the hypothesis**
-### **Limitations**
+The experiment appears to show that there is a measurable positive effect in the use of VR augmented therapy.  
 
+
+### **Limitations**
+We found no confounding variables within the study. 
 
 
 # References
