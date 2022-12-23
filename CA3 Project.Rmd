@@ -293,6 +293,8 @@ xlim = c(0,10),
 ylim = c(0,15))
 hist(df3$pre_trial_or,
 col="red3",
+
+
 main = "Pre Trial OR - Animated",
 xlab = "Score",
 ylab = "Frequency",
@@ -301,6 +303,10 @@ xlim = c(0,10),
 ylim = c(0,15))
 hist(df3$post_trial_or,
 col="red",
+
+
+
+
 main = "Post Trial OR - Animated",
 xlab = "Score",
 ylab = "Frequency",
@@ -309,7 +315,7 @@ xlim = c(0,10),
 ylim = c(0,15))
 #Histogram for Control Group 
 df1<-subset(daie_ca3_data_10, test_group!="Static" & test_group!="Animated")
-df1
+
   
 hist(df1$pre_trial_cpss,
 col="green4",
@@ -321,6 +327,9 @@ xlim = c(0,10),
 ylim = c(0,10))
 hist(df1$post_trial_cpss,
 col="green",
+
+
+
 main = "Post Trial CPSS - Control",
 xlab = "Score",
 ylab = "Frequency",
@@ -329,6 +338,9 @@ xlim = c(0,10),
 ylim = c(0,20))
 hist(df1$pre_trial_or,
 col="green4",
+
+
+
 main = "Pre Trial OR - Control",
 xlab = "Score",
 ylab = "Frequency",
@@ -337,13 +349,22 @@ xlim = c(0,10),
 ylim = c(0,15))
 hist(df1$post_trial_or,
 col="green",
+
+
+
 main = "Post Trial OR - Control",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 10,
 xlim = c(0,10),
 ylim = c(0,15))
+
+
+
 #Normal distribution of overall trial scores
+
+
+
 hist(daie_ca3_data_10$pre_trial_cpss,
 main = "Pre Trial CPSS",
 xlab = "Score",
@@ -354,6 +375,9 @@ main = "Post Trial CPSS",
 xlab = "Score",
 ylab = "Frequency",
 breaks = 10)
+
+
+
 hist(daie_ca3_data_10$pre_trial_or,
 main = "Pre Trial OR",
 xlab = "Score",
@@ -368,7 +392,7 @@ breaks = 10)
 
 * #### *QQ Plots*
 
-```{r QQ Plot - daie_ca3_data_10, echo=FALSE}
+```{r QQ Plot - Groups, echo=FALSE}
 #q plot of Control Group
 qqnorm(df1$pre_trial_cpss,
        pch = 2, frame = FALSE)
@@ -420,6 +444,12 @@ qqnorm(df3$post_trial_or,
        pch = 2, frame = FALSE)
 qqline(df3$post_trial_or,
        col = "darkorchid", lwd = 1)
+```
+
+
+* #### *QQ Plots*
+
+```{r QQ Plot - daie_ca3_data_10, echo=FALSE}
 qqnorm(daie_ca3_data_10$pre_trial_cpss,
        pch = 2, frame = FALSE)
 qqline(daie_ca3_data_10$pre_trial_cpss,
@@ -440,7 +470,7 @@ qqline(daie_ca3_data_10$post_trial_or,
 
 
 ### **Statistical Tests**
-```{r}
+```{r, echo=FALSE}
 
 sample.mean <- mean(daie_ca3_data_10$pre_trial_cpss)
 print(sample.mean)
