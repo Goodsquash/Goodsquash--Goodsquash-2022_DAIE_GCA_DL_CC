@@ -441,9 +441,7 @@ qqline(daie_ca3_data_10$post_trial_or,
 
 ### **Statistical Tests**
 ```{r}
-summary(df1)
-summary(df2)
-summary(df3)
+
 sample.mean <- mean(daie_ca3_data_10$pre_trial_cpss)
 print(sample.mean)
 
