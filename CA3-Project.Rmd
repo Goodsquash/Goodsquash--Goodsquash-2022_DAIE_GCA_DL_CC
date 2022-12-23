@@ -652,7 +652,8 @@ The qq plots also show that the data is normally distributed as the plot points 
 ### **Magnitude and Direction of Results**
 The results of the box plot show a decrease in the quartile ranges as the scale shows that the middle quartile is lower for all three groups int the Post CPSS group. 
 The same is shown for the Pre and Post OR group 
-
+ 
+Visually looking at the histograms for each of the test groups and the test results show that the scores in the post trials for all groups have lowers mean as they are distributed lower on the score scale on the graphs. 
 
 # Discussion
 
@@ -667,7 +668,16 @@ We found no confounding variables within the study.
 
 # References
 
-*
-*
-*
-*
+* Clean your data with R. R programming for beginners. https://www.youtube.com/watch?v=sV5lwAJ7vnQ. 
+
+* NNK (2022). R – Replace String with Another String or Character. https://sparkbyexamples.com/r-programming/replace-string-with-another-string-in-r/. 
+
+
+* Mcleod, S. (2019). How to Write a Lab Report | Simply Psychology. [online] Simplypsychology.org. https://www.simplypsychology.org/research-report.html. 
+
+
+
+* How to make Bar chart in R | RStudio |. https://www.youtube.com/watch?v=bzTY6_8fK7U 
+
+
+* NNK (2022). How to Remove Rows with NA in R. [online]. https://sparkbyexamples.com/r-programming/remove-rows-with-na-in-r/#:~:text=By%20using%20na.  
