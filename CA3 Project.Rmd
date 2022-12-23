@@ -253,7 +253,7 @@ barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Contro
 #### *Histograms showing the normal distribution between the four Pre and Post assessments*
 
 
-* #### *box plots of the three groups Pre and Post trials*
+* #### *Box plots of the three groups Pre and Post trials*
 ```{r , echo=FALSE}
 
 
@@ -667,4 +667,4 @@ The experiment appears to show that there is a measurable positive effect in the
 
 * How to make Bar chart in R | RStudio |. https://www.youtube.com/watch?v=bzTY6_8fK7U 
 
-* NNK (2022). How to Remove Rows with NA in R. [online]. https://sparkbyexamples.com/r-programming/remove-rows-with-na-in-r/#:~:text=By%20using%20na.  
+* NNK (2022). How to Remove Rows with NA in R. [online]. https://sparkbyexamples.com/r-programming/remove-rows-with-na-in-r/#:~:text=By%20using%20na.
