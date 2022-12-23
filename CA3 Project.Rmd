@@ -2,11 +2,13 @@
 title: "CA3 - DAIE Project"
 author: "Conor Crean & Daniel Lacey"
 date: "`r Sys.Date()`"
-output: 
+output:
   html_document:
     theme: journal
-    toc: true
-    toc_float: true
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    toc: yes
 ---
 # **Data Analytics for Immersive Environments**
 ### *Descriptive and Inferential Analysis of a Jungian Sandplay VR Project*
@@ -82,9 +84,11 @@ Does a virtual Jungian Sandplay environment have a meaningful effect on CPSS sco
 
 ### **Rationale**
 
+The rationale behind this study is to ascertain the possible effectiveness of VR based therapies and their potential role in augmenting or complementing established psychotherapies.
 
 ### **Hypothesis**
 
+We plan to investigate the effect of VR based therapy. In this experiment, we will test the effectiveness of VR augmented Jungian Sandplay therapy. We expect that there is likely a significant use case for VR based therapy in a modern therapeutic environment.
 
 # Method
 
