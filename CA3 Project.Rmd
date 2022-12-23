@@ -82,9 +82,11 @@ Does a virtual Jungian Sandplay environment have a meaningful effect on CPSS sco
 
 ### **Rationale**
 
+The rationale behind this study is to ascertain the possible effectiveness of VR based therapies and their potential role in augmenting or complementing established psychotherapies.
 
 ### **Hypothesis**
 
+We plan to investigate the effect of VR based therapy. In this experiment, we will test the effectiveness of VR augmented Jungian Sandplay therapy. We expect that there is likely a significant use case for VR based therapy in a modern therapeutic environment.
 
 # Method
 
@@ -641,16 +643,29 @@ print(c(lower.bound,upper.bound))
 
 # Discussion
 
+<<<<<<< HEAD
 The 
+=======
+---
+>>>>>>> ceca4d5db391a70bd4b3b5d40637845326300d75
 
 ### **Outline findings and relation to the hypothesis**
-### **Limitations**
+
+The experiment appears to show that there is a measurable positive effect in the use of VR augmented therapy.
+
 
 
 
 # References
 
-*
-*
-*
-*
+---
+
+* Clean your data with R. R programming for beginners. https://www.youtube.com/watch?v=sV5lwAJ7vnQ. 
+
+* NNK (2022). R – Replace String with Another String or Character. https://sparkbyexamples.com/r-programming/replace-string-with-another-string-in-r/. 
+
+* Mcleod, S. (2019). How to Write a Lab Report | Simply Psychology. [online] Simplypsychology.org. https://www.simplypsychology.org/research-report.html. 
+
+* How to make Bar chart in R | RStudio |. https://www.youtube.com/watch?v=bzTY6_8fK7U 
+
+* NNK (2022). How to Remove Rows with NA in R. [online]. https://sparkbyexamples.com/r-programming/remove-rows-with-na-in-r/#:~:text=By%20using%20na.  
