@@ -17,6 +17,7 @@ output:
 # **Data Analytics for Immersive Environments**
 ### *Descriptive and Inferential Analysis of a Jungian Sandplay VR Project*
 \newpage
+
 ---
 
 * #### **Table Of Contents:**
