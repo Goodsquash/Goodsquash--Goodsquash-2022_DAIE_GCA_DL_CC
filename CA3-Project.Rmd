@@ -59,7 +59,7 @@ output:
 
 ### **Aim and Rationale**
 
-The aim of this study is to test whether a virtual Jungian sandplay environment presented to psychotherapy patients undergoing treatment for PTSD has a positive effect on their CPSS (child PTSD symptom scale) scores compared to a control group that is subjected to CBT (Cognitive Behavioural Therapy) alone.
+The aim of this study is to test whether a virtual Jungian Sandplay environment presented to psychotherapy patients undergoing treatment for PTSD has a positive effect on their CPSS (child PTSD symptom scale) scores compared to a control group that is subjected to CBT (Cognitive Behavioural Therapy) alone.
 
 ### **Participants and Setting**
 
