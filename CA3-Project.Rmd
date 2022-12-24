@@ -519,6 +519,7 @@ qqline(df3$post_trial_or,
 ```
 
 The data looks to be normally distributed across the QQ plots 
+
 ##### *QQ Plots Trials*
 
 QQ plot was created, the plots show that the data is roughly along the straight line of the graph
