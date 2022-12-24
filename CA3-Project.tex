@@ -65,7 +65,7 @@
 
 \title{CA3 - DAIE Project}
 \author{Conor Crean \& Daniel Lacey}
-\date{2022-12-23}
+\date{2022-12-24}
 
 \begin{document}
 \maketitle
@@ -541,25 +541,78 @@ each group.
 Statistics}}{Inferential Statistics}}\label{inferential-statistics}}
 
 \hypertarget{histograms-showing-the-normal-distribution-between-the-four-pre-and-post-assessments}{%
-\subsubsection{\texorpdfstring{\emph{Histograms showing the normal
+\paragraph{\texorpdfstring{\emph{Histograms showing the normal
 distribution between the four Pre and Post
 assessments}}{Histograms showing the normal distribution between the four Pre and Post assessments}}\label{histograms-showing-the-normal-distribution-between-the-four-pre-and-post-assessments}}
 
-\emph{box plots of the } \emph{three groups Pre and Post trials}
+\emph{Box plots of the } \emph{three groups Pre and Post trials}
 
 \includegraphics{CA3-Project_files/figure-latex/unnamed-chunk-6-1.pdf}
 \includegraphics{CA3-Project_files/figure-latex/unnamed-chunk-6-2.pdf}
 \includegraphics{CA3-Project_files/figure-latex/unnamed-chunk-6-3.pdf}
 \includegraphics{CA3-Project_files/figure-latex/unnamed-chunk-6-4.pdf}
 
+\begin{verbatim}
+##       ...1           gender           test_group        pre_trial_cpss 
+##  Min.   : 51.00   Length:50          Length:50          Min.   :4.030  
+##  1st Qu.: 63.25   Class :character   Class :character   1st Qu.:5.372  
+##  Median : 75.50   Mode  :character   Mode  :character   Median :6.005  
+##  Mean   : 75.50                                         Mean   :6.065  
+##  3rd Qu.: 87.75                                         3rd Qu.:6.728  
+##  Max.   :100.00                                         Max.   :8.000  
+##  post_trial_cpss  pre_trial_or   post_trial_or  
+##  Min.   :0.000   Min.   :3.540   Min.   :3.500  
+##  1st Qu.:4.503   1st Qu.:5.105   1st Qu.:4.510  
+##  Median :5.275   Median :5.925   Median :5.335  
+##  Mean   :5.276   Mean   :6.045   Mean   :5.362  
+##  3rd Qu.:6.000   3rd Qu.:6.707   3rd Qu.:6.003  
+##  Max.   :7.810   Max.   :8.090   Max.   :8.040
+\end{verbatim}
+
 \includegraphics{CA3-Project_files/figure-latex/unnamed-chunk-7-1.pdf}
 \includegraphics{CA3-Project_files/figure-latex/unnamed-chunk-7-2.pdf}
 \includegraphics{CA3-Project_files/figure-latex/unnamed-chunk-7-3.pdf}
 \includegraphics{CA3-Project_files/figure-latex/unnamed-chunk-7-4.pdf}
+
+\begin{verbatim}
+##       ...1          gender           test_group        pre_trial_cpss 
+##  Min.   : 1.00   Length:50          Length:50          Min.   :2.980  
+##  1st Qu.:13.25   Class :character   Class :character   1st Qu.:5.522  
+##  Median :25.50   Mode  :character   Mode  :character   Median :6.055  
+##  Mean   :25.50                                         Mean   :6.091  
+##  3rd Qu.:37.75                                         3rd Qu.:6.885  
+##  Max.   :50.00                                         Max.   :8.520  
+##  post_trial_cpss  pre_trial_or   post_trial_or  
+##  Min.   :1.150   Min.   :2.700   Min.   :1.350  
+##  1st Qu.:4.700   1st Qu.:5.332   1st Qu.:4.665  
+##  Median :5.415   Median :6.185   Median :5.435  
+##  Mean   :5.419   Mean   :6.103   Mean   :5.412  
+##  3rd Qu.:6.242   3rd Qu.:6.960   3rd Qu.:6.247  
+##  Max.   :7.470   Max.   :8.250   Max.   :7.350
+\end{verbatim}
+
 \includegraphics{CA3-Project_files/figure-latex/unnamed-chunk-7-5.pdf}
 \includegraphics{CA3-Project_files/figure-latex/unnamed-chunk-7-6.pdf}
 \includegraphics{CA3-Project_files/figure-latex/unnamed-chunk-7-7.pdf}
 \includegraphics{CA3-Project_files/figure-latex/unnamed-chunk-7-8.pdf}
+
+\begin{verbatim}
+##       ...1          gender           test_group        pre_trial_cpss 
+##  Min.   :101.0   Length:49          Length:49          Min.   :4.280  
+##  1st Qu.:113.0   Class :character   Class :character   1st Qu.:5.110  
+##  Median :125.0   Mode  :character   Mode  :character   Median :6.060  
+##  Mean   :125.1                                         Mean   :5.998  
+##  3rd Qu.:137.0                                         3rd Qu.:6.660  
+##  Max.   :150.0                                         Max.   :8.630  
+##  post_trial_cpss  pre_trial_or   post_trial_or  
+##  Min.   :3.210   Min.   :4.160   Min.   :3.110  
+##  1st Qu.:4.580   1st Qu.:5.140   1st Qu.:4.420  
+##  Median :5.440   Median :5.910   Median :5.370  
+##  Mean   :5.388   Mean   :6.038   Mean   :5.365  
+##  3rd Qu.:6.260   3rd Qu.:6.640   3rd Qu.:6.100  
+##  Max.   :7.400   Max.   :9.160   Max.   :7.390
+\end{verbatim}
+
 \includegraphics{CA3-Project_files/figure-latex/unnamed-chunk-7-9.pdf}
 \includegraphics{CA3-Project_files/figure-latex/unnamed-chunk-7-10.pdf}
 \includegraphics{CA3-Project_files/figure-latex/unnamed-chunk-7-11.pdf}
@@ -584,7 +637,9 @@ participants.
 \includegraphics{CA3-Project_files/figure-latex/unnamed-chunk-8-3.pdf}
 \includegraphics{CA3-Project_files/figure-latex/unnamed-chunk-8-4.pdf}
 
-The data was shown to be normally distributed across the 4 trials
+The data was shown to be normally distributed across the 4 trials The
+normality test shows that the data is normally distributed since the
+graph bars are symmetrical in each of the graphs for the Trial Data.
 
 \begin{itemize}
 \item ~
@@ -623,6 +678,8 @@ straight line of the graph
 
 \emph{QQ Plot - Post Trial OR}
 \includegraphics{CA3-Project_files/figure-latex/QQ Plot - daie_ca3_data_10 Post OR-1.pdf}
+The qq plots also show that the data is normally distributed as the plot
+points are close to the line of the chart.
 
 \hypertarget{statistical-tests}{%
 \subsubsection{\texorpdfstring{\textbf{Statistical
@@ -688,9 +745,21 @@ Tests}}{Statistical Tests}}\label{statistical-tests}}
 ## [1] 5.869617 6.234276
 \end{verbatim}
 
+We can say with 95\% confidence that the mean lies between the values
+shown
+
 \hypertarget{magnitude-and-direction-of-results}{%
 \subsubsection{\texorpdfstring{\textbf{Magnitude and Direction of
 Results}}{Magnitude and Direction of Results}}\label{magnitude-and-direction-of-results}}
+
+The results of the box plot show a decrease in the quartile ranges as
+the scale shows that the middle quartile is lower for all three groups
+int the Post CPSS group. The same is shown for the Pre and Post OR group
+
+Visually looking at the histograms for each of the test groups and the
+test results show that the scores in the post trials for all groups have
+lowers mean as they are distributed lower on the score scale on the
+graphs.
 
 \hypertarget{discussion-1}{%
 \section{Discussion}\label{discussion-1}}
@@ -700,18 +769,42 @@ Results}}{Magnitude and Direction of Results}}\label{magnitude-and-direction-of-
 the
 hypothesis}}{Outline findings and relation to the hypothesis}}\label{outline-findings-and-relation-to-the-hypothesis}}
 
+The experiment appears to show that there is a measurable positive
+effect in the use of VR augmented therapy.
+
 \hypertarget{limitations}{%
 \subsubsection{\texorpdfstring{\textbf{Limitations}}{Limitations}}\label{limitations}}
+
+We found no confounding variables within the study.
 
 \hypertarget{references}{%
 \section{References}\label{references}}
 
 \begin{itemize}
-\tightlist
 \item
+  Clean your data with R. R programming for beginners.
+  \url{https://www.youtube.com/watch?v=sV5lwAJ7vnQ}.
 \item
+  NNK (2022). R -- Replace String with Another String or Character.
+  \url{https://sparkbyexamples.com/r-programming/replace-string-with-another-string-in-r/}.
 \item
+  Mcleod, S. (2019). How to Write a Lab Report \textbar{} Simply
+  Psychology. {[}online{]} Simplypsychology.org.
+  \url{https://www.simplypsychology.org/research-report.html}.
 \item
+  How to make Bar chart in R \textbar{} RStudio \textbar.
+  \url{https://www.youtube.com/watch?v=bzTY6_8fK7U}
+\item
+  NNK (2022). How to Remove Rows with NA in R.
+  \url{https://sparkbyexamples.com/r-programming/remove-rows-with-na-in-r/\#}:\textasciitilde:text=By\%20using\%20na.
+\item
+  yihui.org. (n.d.). TinyTeX - Yihui Xie \textbar{} 谢益辉. Available
+  at: \url{https://yihui.org/tinytex/}.
+\item
+  Ph.D, L.K. (n.d.). Practice 9 Calculating Confidence Intervals in R
+  \textbar{} R Practices for Learning Statistics. bookdown.org.
+  Available at:
+  \url{https://bookdown.org/logan_kelly/r_practice/p09.html}.
 \end{itemize}
 
 \end{document}

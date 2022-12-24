@@ -255,8 +255,9 @@ barplot(control_data,xlab="Control Group",ylab="Trial Scores Mean", main="Contro
 
 ---
 ---
-### *Histograms showing the normal distribution between the four Pre and Post assessments*
-*box plots of the *
+#### *Histograms showing the normal distribution between the four Pre and Post assessments*
+
+*Box plots of the *
 *three groups Pre and Post trials*
 
 
@@ -418,7 +419,7 @@ ylim = c(0,15))
 ```
 
 
-* ### *Normal distribution of overall trial scores*
+#####  *Normal distribution of overall trial scores*
 To check for normal distribution in the population a histogram was created for the test groups row of numbers. To create this the following function was used.   
 
 This was applied to the 4 stages of the assessments used on the participants. 
@@ -457,7 +458,7 @@ The data was shown to be normally distributed across the 4 trials
 The normality test shows that the data is normally distributed since the graph bars are symmetrical in each of the graphs for the Trial Data. 
 
 
-* ### *QQ Plots Groups and Trial type*
+#####  *QQ Plots Groups and Trial type*
 
 ```{r QQ Plot - Groups, echo=FALSE}
 #q plot of Control Group
@@ -514,7 +515,7 @@ qqline(df3$post_trial_or,
 ```
 
 The data looks to be normally distributed across the QQ plots 
-* ### *QQ Plots Trials*
+##### *QQ Plots Trials*
 
 QQ plot was created, the plots show that the data is roughly along the straight line of the graph
 
@@ -551,7 +552,7 @@ qqnorm(daie_ca3_data_10$post_trial_or,
 qqline(daie_ca3_data_10$post_trial_or,
        col = "darkorchid", lwd = 1)
 ```
-
+The qq plots also show that the data is normally distributed as the plot points are close to the line of the chart. 
 
 ### **Statistical Tests**
 
@@ -646,7 +647,7 @@ print(c(lower.bound,upper.bound))
 
 
 ```
-The qq plots also show that the data is normally distributed as the plot points are close to the line of the chart. 
+We can say with 95% confidence that the mean lies between the values shown
 
 
 ### **Magnitude and Direction of Results**
@@ -672,12 +673,14 @@ We found no confounding variables within the study.
 
 * NNK (2022). R – Replace String with Another String or Character. https://sparkbyexamples.com/r-programming/replace-string-with-another-string-in-r/. 
 
-
 * Mcleod, S. (2019). How to Write a Lab Report | Simply Psychology. [online] Simplypsychology.org. https://www.simplypsychology.org/research-report.html. 
-
-
 
 * How to make Bar chart in R | RStudio |. https://www.youtube.com/watch?v=bzTY6_8fK7U 
 
+* NNK (2022). How to Remove Rows with NA in R. https://sparkbyexamples.com/r-programming/remove-rows-with-na-in-r/#:~:text=By%20using%20na.  
 
-* NNK (2022). How to Remove Rows with NA in R. [online]. https://sparkbyexamples.com/r-programming/remove-rows-with-na-in-r/#:~:text=By%20using%20na.  
+* yihui.org. (n.d.). TinyTeX - Yihui Xie | 谢益辉. 
+Available at: https://yihui.org/tinytex/. 
+
+* Ph.D, L.K. (n.d.). Practice 9 Calculating Confidence Intervals in R | R Practices for Learning Statistics. bookdown.org. Available at: https://bookdown.org/logan_kelly/r_practice/p09.html. 
+
